@@ -7,13 +7,8 @@ public class Panorama {
     // Constants
     static String separator = "    ____________________________________________________________";
     static String indent = "     "; // 5 spaces
-
-    // Commands
-    static String exit_command = "bye";
-    static String list_command = "list";
-
     // Memory
-    List<String> memory;
+    static List<String> memory;
 
     static void welcome_greeting() {
         System.out.println(separator);
@@ -24,12 +19,28 @@ public class Panorama {
 
     static void exit_greeting() {
         String exit_statement = "Bye. Hope to see you again soon!";
+        System.out.println(separator);
         System.out.println(indent + exit_statement);
+        System.out.println(separator);
     }
 
-    static void invalid_command() {
-        String statement = "Invalid command.";
-        System.out.print(statement);
+    static void add_entry(String s) {
+        System.out.println(separator);
+        System.out.print(indent + "added: ");
+        System.out.println(s);
+        System.out.println(separator);
+
+        memory.add(s);
+    }
+
+    static void list_entries() {
+        System.out.println(separator);
+        for (int i = 0; i < memory.size(); i++) {
+            int num = i + 1;
+            System.out.print(indent + num + ". ");
+            System.out.println(memory.get(i));
+        }
+        System.out.println(separator);
     }
 
     public static void main(String[] args) {
@@ -39,18 +50,22 @@ public class Panorama {
         memory = new ArrayList<String>();
 
         String input;
+        boolean hasExited = false;
 
-        while (true) {
+        while (!hasExited) {
             input = scanner.nextLine();
 
             switch (input) {
-                case: exit_command
+                case "bye":
                     exit_greeting();
+                    hasExited = true;
+                    break;
+                case "list":
+                    list_entries();
+                    break;
                 default:
-                    invalid_command();
+                    add_entry(input);
             }
         }
-
-        scanner.close();
     }
 }
