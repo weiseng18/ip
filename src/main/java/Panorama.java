@@ -10,6 +10,10 @@ public class Panorama {
 
     // Commands
     static String exit_command = "bye";
+    static String list_command = "list";
+
+    // Memory
+    List<String> memory;
 
     static void welcome_greeting() {
         System.out.println(separator);
@@ -23,22 +27,27 @@ public class Panorama {
         System.out.println(indent + exit_statement);
     }
 
+    static void invalid_command() {
+        String statement = "Invalid command.";
+        System.out.print(statement);
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         welcome_greeting();
+        memory = new ArrayList<String>();
 
         String input;
 
         while (true) {
             input = scanner.nextLine();
-            if (input.equals(exit_command)) {
-                exit_greeting();
-                break;
-            } else {
-              System.out.println(separator);
-              System.out.println(indent + input);
-              System.out.println(separator);
-              System.out.println();
+
+            switch (input) {
+                case: exit_command
+                    exit_greeting();
+                default:
+                    invalid_command();
             }
         }
 
