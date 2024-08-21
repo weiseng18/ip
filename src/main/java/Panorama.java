@@ -1,11 +1,13 @@
 import java.util.Scanner;
 
 public class Panorama {
+
+    // Constants
+    String separator = "    ____________________________________________________________";
+    String indent = "     "; // 5 spaces
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String separator = "    ____________________________________________________________";
-        // 5 spaces
-        String indent = "     ";
 
         System.out.println(separator);
         System.out.println(indent + "Hello! I'm Panorama");
