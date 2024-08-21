@@ -1,10 +1,12 @@
 public class Panorama {
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
+        String separator = "____________________________________________________________";
+
+        System.out.println(separator);
+        System.out.println(" Hello! I'm Panorama");
+        System.out.println(" What can I do for you?");
+        System.out.println(separator);
+        System.out.println(" Bye. Hope to see you again soon!");
+        System.out.println(separator);
     }
 }
