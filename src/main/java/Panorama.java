@@ -8,7 +8,7 @@ public class Panorama {
     static String separator = "    ____________________________________________________________";
     static String indent = "     "; // 5 spaces
     // Memory
-    static List<String> memory;
+    static List<Task> memory;
 
     static void welcome_greeting() {
         System.out.println(separator);
@@ -30,7 +30,7 @@ public class Panorama {
         System.out.println(s);
         System.out.println(separator);
 
-        memory.add(s);
+        memory.add(new Task(s));
     }
 
     static void list_entries() {
@@ -38,7 +38,7 @@ public class Panorama {
         for (int i = 0; i < memory.size(); i++) {
             int num = i + 1;
             System.out.print(indent + num + ". ");
-            System.out.println(memory.get(i));
+            System.out.println(memory.get(i).name);
         }
         System.out.println(separator);
     }
@@ -47,7 +47,7 @@ public class Panorama {
         Scanner scanner = new Scanner(System.in);
 
         welcome_greeting();
-        memory = new ArrayList<String>();
+        memory = new ArrayList<Task>();
 
         String input;
         boolean hasExited = false;
