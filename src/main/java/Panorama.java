@@ -42,6 +42,15 @@ public class Panorama {
         System.out.println(separator);
     }
 
+    static void add_event(String name, String from, String to) {
+        memory.add(new Event(name, from, to));
+
+        System.out.println(separator);
+        System.out.println(indent + "Added task:");
+        System.out.println(memory.get(memory.size() - 1));
+        System.out.println(separator);
+    }
+
     static void list_entries() {
         System.out.println(separator);
         for (int i = 0; i < memory.size(); i++) {
@@ -92,6 +101,10 @@ public class Panorama {
             String[] tokens = input.split(" ");
             String name;
 
+            // for splitting tokens further
+            String contents;
+            String[] content_tokens;
+
             switch (tokens[0]) {
                 case "mark":
                     mark_task(tokens[1]);
@@ -111,25 +124,26 @@ public class Panorama {
                     add_todo(name);
                     break;
                 case "deadline":
-                    String contents = input.substring(9);
+                    contents = input.substring(9);
 
-                    // assume either /by XXX
-                    // or /from XXX /to YYY
-                    String[] a = contents.split(" /by ");
-                    if (a.length == 2) {
-                        name = a[0];
-                        String date = a[1];
+                    content_tokens = contents.split(" /by ");
+                    name = content_tokens[0];
+                    String date = content_tokens[1];
 
-                        add_deadline(name, date);
-                    } else {
-                        String[] b = contents.split(" /from ");
-                        name = b[0];
+                    add_deadline(name, date);
+                    break;
+                case "event":
+                    contents = input.substring(6);
 
-                        String[] c = b[1].split(" /to ");
-                        String date = "from: " + c[0] + " to: " + c[1];
+                    content_tokens = contents.split(" /from ");
+                    name = content_tokens[0];
 
-                        add_deadline(name, date);
-                    }
+                    String[] dateRange = content_tokens[1].split(" /to ");
+
+                    String from = dateRange[0];
+                    String to = dateRange[1];
+
+                    add_event(name, from, to);
                     break;
             }
         }
