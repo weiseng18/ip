@@ -87,6 +87,22 @@ public class Panorama {
         System.out.println(separator);
     }
 
+    static void delete_task(String string_id) {
+        String delete_statement = "Noted. I've removed this task:";
+
+        int id = Integer.parseInt(string_id);
+        Task t = memory.get(id - 1);
+
+        // because input is 1-indexed
+        memory.remove(id - 1);
+
+        System.out.println(separator);
+        System.out.println(indent + delete_statement);
+        System.out.println(indent + t);
+        System.out.println(separator);
+    }
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -149,6 +165,9 @@ public class Panorama {
                         String to = dateRange[1];
 
                         add_event(name, from, to);
+                        break;
+                    case "delete":
+                        delete_task(tokens[1]);
                         break;
                     default:
                         throw new UnknownCommandException();
