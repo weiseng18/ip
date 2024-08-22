@@ -24,13 +24,22 @@ public class Panorama {
         System.out.println(separator);
     }
 
-    static void add_entry(String s) {
-        System.out.println(separator);
-        System.out.print(indent + "added: ");
-        System.out.println(s);
-        System.out.println(separator);
+    static void add_todo(String name) {
+        memory.add(new Todo(name));
 
-        memory.add(new Todo(s));
+        System.out.println(separator);
+        System.out.println(indent + "Added task:");
+        System.out.println(memory.get(memory.size() - 1));
+        System.out.println(separator);
+    }
+
+    static void add_deadline(String name, String date) {
+        memory.add(new Deadline(name, date));
+
+        System.out.println(separator);
+        System.out.println(indent + "Added task:");
+        System.out.println(memory.get(memory.size() - 1));
+        System.out.println(separator);
     }
 
     static void list_entries() {
@@ -81,24 +90,47 @@ public class Panorama {
         while (!hasExited) {
             input = scanner.nextLine();
             String[] tokens = input.split(" ");
+            String name;
 
-            // assume that if the first word is mark/unmark, and there are 2 words, then it is a marking command
-            if (tokens[0].equals("mark") && tokens.length == 2) {
-                mark_task(tokens[1]);
-            } else if (tokens[0].equals("unmark") && tokens.length == 2) {
-                unmark_task(tokens[1]);
-            } else {
-                switch (input) {
-                    case "bye":
-                        exit_greeting();
-                        hasExited = true;
-                        break;
-                    case "list":
-                        list_entries();
-                        break;
-                    default:
-                        add_entry(input);
-                }
+            switch (tokens[0]) {
+                case "mark":
+                    mark_task(tokens[1]);
+                    break;
+                case "unmark":
+                    unmark_task(tokens[1]);
+                    break;
+                case "bye":
+                    exit_greeting();
+                    hasExited = true;
+                    break;
+                case "list":
+                    list_entries();
+                    break;
+                case "todo":
+                    name = input.substring(5);
+                    add_todo(name);
+                    break;
+                case "deadline":
+                    String contents = input.substring(9);
+
+                    // assume either /by XXX
+                    // or /from XXX /to YYY
+                    String[] a = contents.split(" /by ");
+                    if (a.length == 2) {
+                        name = a[0];
+                        String date = a[1];
+
+                        add_deadline(name, date);
+                    } else {
+                        String[] b = contents.split(" /from ");
+                        name = b[0];
+
+                        String[] c = b[1].split(" /to ");
+                        String date = "from: " + c[0] + " to: " + c[1];
+
+                        add_deadline(name, date);
+                    }
+                    break;
             }
         }
     }
