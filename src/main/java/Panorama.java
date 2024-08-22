@@ -43,6 +43,18 @@ public class Panorama {
         System.out.println(separator);
     }
 
+    static void mark_task(String string_id) {
+        int id = Integer.parseInt(string_id);
+        // because input is 1-indexed
+        memory.get(id - 1).isDone = true;
+    }
+
+    static void unmark_task(String string_id) {
+        int id = Integer.parseInt(string_id);
+        // because input is 1-indexed
+        memory.get(id - 1).isDone = false;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -54,17 +66,25 @@ public class Panorama {
 
         while (!hasExited) {
             input = scanner.nextLine();
+            String[] tokens = input.split(" ");
 
-            switch (input) {
-                case "bye":
-                    exit_greeting();
-                    hasExited = true;
-                    break;
-                case "list":
-                    list_entries();
-                    break;
-                default:
-                    add_entry(input);
+            // assume that if the first word is mark/unmark, and there are 2 words, then it is a marking command
+            if (tokens[0].equals("mark") && tokens.length == 2) {
+                mark_task(tokens[1]);
+            } else if (tokens[0].equals("unmark") && tokens.length == 2) {
+                unmark_task(tokens[1]);
+            } else {
+                switch (input) {
+                    case "bye":
+                        exit_greeting();
+                        hasExited = true;
+                        break;
+                    case "list":
+                        list_entries();
+                        break;
+                    default:
+                        add_entry(input);
+                }
             }
         }
     }
