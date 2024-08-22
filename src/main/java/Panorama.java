@@ -97,54 +97,68 @@ public class Panorama {
         boolean hasExited = false;
 
         while (!hasExited && scanner.hasNext()) {
-            input = scanner.nextLine();
-            String[] tokens = input.split(" ");
-            String name;
+            try {
+                input = scanner.nextLine();
+                String[] tokens = input.split(" ");
+                String name;
 
-            // for splitting tokens further
-            String contents;
-            String[] content_tokens;
+                // for splitting tokens further
+                String contents;
+                String[] content_tokens;
 
-            switch (tokens[0]) {
-                case "mark":
-                    mark_task(tokens[1]);
-                    break;
-                case "unmark":
-                    unmark_task(tokens[1]);
-                    break;
-                case "bye":
-                    exit_greeting();
-                    hasExited = true;
-                    break;
-                case "list":
-                    list_entries();
-                    break;
-                case "todo":
-                    name = input.substring(5);
-                    add_todo(name);
-                    break;
-                case "deadline":
-                    contents = input.substring(9);
+                switch (tokens[0]) {
+                    case "mark":
+                        mark_task(tokens[1]);
+                        break;
+                    case "unmark":
+                        unmark_task(tokens[1]);
+                        break;
+                    case "bye":
+                        exit_greeting();
+                        hasExited = true;
+                        break;
+                    case "list":
+                        list_entries();
+                        break;
+                    case "todo":
+                        if (input.length() <= 5) {
+                            throw new EmptyDescriptionException();
+                        }
 
-                    content_tokens = contents.split(" /by ");
-                    name = content_tokens[0];
-                    String date = content_tokens[1];
+                        name = input.substring(5);
+                        add_todo(name);
+                        break;
+                    case "deadline":
+                        contents = input.substring(9);
 
-                    add_deadline(name, date);
-                    break;
-                case "event":
-                    contents = input.substring(6);
+                        content_tokens = contents.split(" /by ");
+                        name = content_tokens[0];
+                        String date = content_tokens[1];
 
-                    content_tokens = contents.split(" /from ");
-                    name = content_tokens[0];
+                        add_deadline(name, date);
+                        break;
+                    case "event":
+                        contents = input.substring(6);
 
-                    String[] dateRange = content_tokens[1].split(" /to ");
+                        content_tokens = contents.split(" /from ");
+                        name = content_tokens[0];
 
-                    String from = dateRange[0];
-                    String to = dateRange[1];
+                        String[] dateRange = content_tokens[1].split(" /to ");
 
-                    add_event(name, from, to);
-                    break;
+                        String from = dateRange[0];
+                        String to = dateRange[1];
+
+                        add_event(name, from, to);
+                        break;
+                    default:
+                        throw new UnknownCommandException();
+                }
+            } catch (EmptyDescriptionException e) {
+                System.out.println(indent + "The task description cannot be empty.");
+                System.out.println(separator);
+            } catch (UnknownCommandException e) {
+                System.out.println(indent + "Unknown command.");
+                System.out.println(separator);
             }
         }
     }
