@@ -29,7 +29,7 @@ public class Panorama {
 
         System.out.println(separator);
         System.out.println(indent + "Added task:");
-        System.out.println(memory.get(memory.size() - 1));
+        System.out.println(indent + memory.get(memory.size() - 1));
         System.out.println(separator);
     }
 
@@ -38,7 +38,7 @@ public class Panorama {
 
         System.out.println(separator);
         System.out.println(indent + "Added task:");
-        System.out.println(memory.get(memory.size() - 1));
+        System.out.println(indent + memory.get(memory.size() - 1));
         System.out.println(separator);
     }
 
@@ -47,7 +47,7 @@ public class Panorama {
 
         System.out.println(separator);
         System.out.println(indent + "Added task:");
-        System.out.println(memory.get(memory.size() - 1));
+        System.out.println(indent + memory.get(memory.size() - 1));
         System.out.println(separator);
     }
 
