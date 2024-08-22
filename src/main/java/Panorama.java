@@ -44,15 +44,29 @@ public class Panorama {
     }
 
     static void mark_task(String string_id) {
+        String mark_statement = "Nice! I've marked this task as done:";
+
         int id = Integer.parseInt(string_id);
         // because input is 1-indexed
         memory.get(id - 1).isDone = true;
+
+        System.out.println(separator);
+        System.out.println(indent + mark_statement);
+        System.out.println(indent + memory.get(id - 1));
+        System.out.println(separator);
     }
 
     static void unmark_task(String string_id) {
+        String unmark_statement = "OK, I've marked this task as not done yet:";
+
         int id = Integer.parseInt(string_id);
         // because input is 1-indexed
         memory.get(id - 1).isDone = false;
+
+        System.out.println(separator);
+        System.out.println(indent + unmark_statement);
+        System.out.println(indent + memory.get(id - 1));
+        System.out.println(separator);
     }
 
     public static void main(String[] args) {
