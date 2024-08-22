@@ -30,7 +30,7 @@ public class Panorama {
         System.out.println(s);
         System.out.println(separator);
 
-        memory.add(new Task(s));
+        memory.add(new Todo(s));
     }
 
     static void list_entries() {
