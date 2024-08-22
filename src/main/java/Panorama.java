@@ -38,7 +38,7 @@ public class Panorama {
         for (int i = 0; i < memory.size(); i++) {
             int num = i + 1;
             System.out.print(indent + num + ". ");
-            System.out.println(memory.get(i).name);
+            System.out.println(memory.get(i));
         }
         System.out.println(separator);
     }
