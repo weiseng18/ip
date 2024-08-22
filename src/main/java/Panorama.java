@@ -96,7 +96,7 @@ public class Panorama {
         String input;
         boolean hasExited = false;
 
-        while (!hasExited) {
+        while (!hasExited && scanner.hasNext()) {
             input = scanner.nextLine();
             String[] tokens = input.split(" ");
             String name;
