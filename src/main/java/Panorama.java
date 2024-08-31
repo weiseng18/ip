@@ -5,8 +5,8 @@ import java.util.List;
 public class Panorama {
 
     // Constants
-    static String separator = "    ____________________________________________________________";
-    static String indent = "     "; // 5 spaces
+    static final String separator = "    ____________________________________________________________";
+    static final String indent = "     "; // 5 spaces
     // Memory
     static List<Task> memory;
 
