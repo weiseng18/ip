@@ -9,6 +9,20 @@ public abstract class Task {
         this.c = c;
     }
 
+    /**
+     * Represent Task as a string that is easier for read/write
+     * Note the use of | as the separator.
+     */
+    public String toFileString() {
+        String output = "";
+        output += c;
+        output += "|";
+        output += this.isDone ? "1" : "0";
+        output += "|";
+        output += this.name;
+        return output;
+    }
+
     public String toString() {
         String output = "";
         output += "[" + c + "]";

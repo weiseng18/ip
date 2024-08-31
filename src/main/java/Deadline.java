@@ -6,6 +6,10 @@ public class Deadline extends Task {
         this.date = date;
     }
 
+    public String toFileString() {
+        return super.toFileString() + "|" + date;
+    }
+
     public String toString() {
         return super.toString() + " (by: " + date + ")";
     }

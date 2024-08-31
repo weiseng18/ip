@@ -7,6 +7,10 @@ public class Event extends Task {
         this.to = to;
     }
 
+    public String toFileString() {
+        return super.toFileString() + "|" + from + "|" + to;
+    }
+
     public String toString() {
         return super.toString() + " (from: " + from + " to: " + to + ")";
     }

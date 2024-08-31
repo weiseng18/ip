@@ -1,0 +1,6 @@
+T|0|t
+D|0|d|a
+E|0|e|b|c
+T|1|tm
+D|1|dm|d
+E|1|em|e|f

@@ -2,11 +2,18 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public class Panorama {
 
     // Constants
-    static String separator = "    ____________________________________________________________";
-    static String indent = "     "; // 5 spaces
+    static final String separator = "    ____________________________________________________________";
+    static final String indent = "     "; // 5 spaces
+    static final String SAVE_FILE_NAME = "./data.txt";
     // Memory
     static List<Task> memory;
 
@@ -102,12 +109,74 @@ public class Panorama {
         System.out.println(separator);
     }
 
+    static void display_help() {
+        System.out.println(separator);
+
+        System.out.println(indent + "list");
+        System.out.println(indent + "bye");
+
+        System.out.println(indent + "todo (description)");
+        System.out.println(indent + "deadline (description) /by (date_string)");
+        System.out.println(indent + "event (description) /from (date_string) /to (date_string)");
+
+        System.out.println(indent + "mark (task_id)");
+        System.out.println(indent + "unmark (task_id)");
+        System.out.println(indent + "delete (task_id)");
+
+        System.out.println(separator);
+    }
+
+    /**
+     * Load task list from ./data.txt.
+     * If non-existent, assume that there is no past data.
+     */
+    static void load_task_list() throws FileNotFoundException {
+        File myFile = new File("./data.txt");
+        Scanner myReader = new Scanner(myFile);
+        while (myReader.hasNextLine()) {
+            String task = myReader.nextLine();
+            // Note that | is a special char in regex
+            String[] tokens = task.split("\\|");
+
+            if (tokens[0].equals("T")) {
+                memory.add(new Todo(tokens[2]));
+            } else if (tokens[0].equals("D")) {
+                memory.add(new Deadline(tokens[2], tokens[3]));
+            } else {
+                memory.add(new Event(tokens[2], tokens[3], tokens[4]));
+            }
+
+            // Set marked/unmarked correctly
+            memory.get(memory.size() - 1).isDone = tokens[1] == "1";
+        }
+    }
+
+    /**
+     * Save current task list to ./data.txt.
+     */
+    static void save_task_list() throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(SAVE_FILE_NAME));
+        for (int i = 0; i < memory.size(); i++) {
+            writer.write(memory.get(i).toFileString() + "\n");
+        }
+        writer.close();
+    }
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         welcome_greeting();
         memory = new ArrayList<Task>();
+
+        // Check for past data
+        try {
+            load_task_list();
+            System.out.println("Successfully loaded task list.");
+        } catch (FileNotFoundException e) {
+            System.out.println("./data.txt does not exist. Starting from an empty task list.");
+        }
+        System.out.println(separator);
 
         String input;
         boolean hasExited = false;
@@ -145,6 +214,10 @@ public class Panorama {
                         add_todo(name);
                         break;
                     case "deadline":
+                        if (input.length() <= 9) {
+                            throw new EmptyDescriptionException();
+                        }
+
                         contents = input.substring(9);
 
                         content_tokens = contents.split(" /by ");
@@ -154,6 +227,10 @@ public class Panorama {
                         add_deadline(name, date);
                         break;
                     case "event":
+                        if (input.length() <= 6) {
+                            throw new EmptyDescriptionException();
+                        }
+
                         contents = input.substring(6);
 
                         content_tokens = contents.split(" /from ");
@@ -169,6 +246,9 @@ public class Panorama {
                     case "delete":
                         delete_task(tokens[1]);
                         break;
+                    case "help":
+                        display_help();
+                        break;
                     default:
                         throw new UnknownCommandException();
                 }
@@ -179,6 +259,14 @@ public class Panorama {
                 System.out.println(indent + "Unknown command.");
                 System.out.println(separator);
             }
+        }
+
+        // Save task list to file after exiting
+        try {
+            save_task_list();
+            System.out.println("Successfully saved to file.");
+        } catch (IOException e) {
+            System.out.println("Error in saving to file.");
         }
     }
 }
