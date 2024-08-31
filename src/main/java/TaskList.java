@@ -4,6 +4,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 // Parser folder
+import Parser.Parser;
 import Parser.DateParser;
 
 // Exceptions folder
@@ -27,37 +28,20 @@ public class TaskList {
     }
 
     void addTodoTask(String input) throws EmptyDescriptionException {
-        if (input.length() <= 5) {
-            throw new EmptyDescriptionException();
-        }
-        String name = input.substring(5);
-        memory.add(new Todo(name));
+        Task t = Parser.parseTodoInput(input);
+        memory.add(t);
         printTaskAdded(memory.size() - 1);
     }
 
     void addDeadlineTask(String input) throws EmptyDescriptionException {
-        if (input.length() <= 9) {
-            throw new EmptyDescriptionException();
-        }
-
-        String[] contentTokens = input.substring(9).split(" /by ");
-        String name = contentTokens[0];
-        LocalDateTime date = DateParser.parse(contentTokens[1]);
-        memory.add(new Deadline(name, date));
+        Task t = Parser.parseDeadlineInput(input);
+        memory.add(t);
         printTaskAdded(memory.size() - 1);
     }
 
     void addEventTask(String input) throws EmptyDescriptionException {
-        if (input.length() <= 6) {
-            throw new EmptyDescriptionException();
-        }
-        String[] contentTokens = input.substring(6).split(" /from ");
-        String name = contentTokens[0];
-
-        String[] dateRange = contentTokens[1].split(" /to ");
-        LocalDateTime from = DateParser.parse(dateRange[0]);
-        LocalDateTime to = DateParser.parse(dateRange[1]);
-        memory.add(new Event(name, from, to));
+        Task t = Parser.parseEventInput(input);
+        memory.add(t);
         printTaskAdded(memory.size() - 1);
     }
 
