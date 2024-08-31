@@ -1,3 +1,5 @@
+package MyTask;
+
 public class Event extends Task {
     String from, to;
 

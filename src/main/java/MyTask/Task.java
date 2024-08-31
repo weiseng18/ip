@@ -1,3 +1,5 @@
+package MyTask;
+
 public abstract class Task {
     String name;
     boolean isDone;
@@ -7,6 +9,10 @@ public abstract class Task {
         this.name = name;
         this.isDone = false;
         this.c = c;
+    }
+
+    public void setIsDone(boolean status) {
+        this.isDone = status;
     }
 
     /**

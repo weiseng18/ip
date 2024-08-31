@@ -8,6 +8,16 @@ import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+// Task folder
+import MyTask.Task;
+import MyTask.Todo;
+import MyTask.Deadline;
+import MyTask.Event;
+
+// Exceptions folder
+import MyException.EmptyDescriptionException;
+import MyException.UnknownCommandException;
+
 public class Panorama {
 
     // Constants
@@ -73,7 +83,7 @@ public class Panorama {
 
         int id = Integer.parseInt(string_id);
         // because input is 1-indexed
-        memory.get(id - 1).isDone = true;
+        memory.get(id - 1).setIsDone(true);
 
         System.out.println(separator);
         System.out.println(indent + mark_statement);
@@ -86,7 +96,7 @@ public class Panorama {
 
         int id = Integer.parseInt(string_id);
         // because input is 1-indexed
-        memory.get(id - 1).isDone = false;
+        memory.get(id - 1).setIsDone(false);
 
         System.out.println(separator);
         System.out.println(indent + unmark_statement);
@@ -147,7 +157,7 @@ public class Panorama {
             }
 
             // Set marked/unmarked correctly
-            memory.get(memory.size() - 1).isDone = tokens[1] == "1";
+            memory.get(memory.size() - 1).setIsDone(tokens[1] == "1");
         }
     }
 
