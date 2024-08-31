@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 
 import java.util.Locale;
 
@@ -6,66 +7,77 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.time.format.DateTimeParseException;
 
+// Task folder
+import MyTask.Task;
+
 // Exceptions folder
 import MyException.EmptyDescriptionException;
 import MyException.UnknownCommandException;
 
 public class Panorama {
+    static TaskList taskList;
+    static Ui ui;
 
-    // Constants
-    public static final String SEPARATOR = "    ____________________________________________________________";
-    public static final String INDENT = "     "; // 5 spaces
+    /**
+     * @return true if BYE command was executed, false otherwise
+     */
+    static boolean handleCommand(String input) throws EmptyDescriptionException, UnknownCommandException {
+        String[] tokens = input.split(" ");
+        Command command = Command.fromString(tokens[0]);
 
-    static TaskManager taskManager;
+        switch (command) {
+            case MARK:
+                taskList.markTask(tokens[1]);
+                break;
+            case UNMARK:
+                taskList.unmarkTask(tokens[1]);
+                break;
+            case BYE:
+                ui.exit_greeting();
+                return true;
+            case LIST:
+                taskList.listEntries();
+                break;
+            case TODO:
+                taskList.addTodoTask(input);
+                break;
+            case DEADLINE:
+                taskList.addDeadlineTask(input);
+                break;
+            case EVENT:
+                taskList.addEventTask(input);
+                break;
+            case DELETE:
+                taskList.deleteTask(tokens[1]);
+                break;
+            case HELP:
+                ui.display_help();
+                break;
+            default:
+                throw new UnknownCommandException();
+        }
 
-    static void welcome_greeting() {
-        System.out.println(SEPARATOR);
-        System.out.println(INDENT + "Hello! I'm Panorama");
-        System.out.println(INDENT + "What can I do for you?");
-        System.out.println(SEPARATOR);
-    }
-
-    static void exit_greeting() {
-        String exit_statement = "Bye. Hope to see you again soon!";
-        System.out.println(SEPARATOR);
-        System.out.println(INDENT + exit_statement);
-        System.out.println(SEPARATOR);
-    }
-
-    static void display_help() {
-        System.out.println(SEPARATOR);
-
-        System.out.println(INDENT + "list");
-        System.out.println(INDENT + "bye");
-
-        System.out.println(INDENT + "todo (description)");
-        System.out.println(INDENT + "deadline (description) /by (date_string)");
-        System.out.println(INDENT + "event (description) /from (date_string) /to (date_string)");
-
-        System.out.println(INDENT + "mark (task_id)");
-        System.out.println(INDENT + "unmark (task_id)");
-        System.out.println(INDENT + "delete (task_id)");
-
-        System.out.println(SEPARATOR);
+        return false;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        taskManager = new TaskManager();
+        taskList = new TaskList();
+        Storage storage = new Storage();
 
         // force locale
         Locale.setDefault(Locale.ENGLISH);
 
-        welcome_greeting();
+        ui.welcome_greeting();
 
         // Check for past data
         try {
-            taskManager.loadTaskList();
-            System.out.println("Successfully loaded task list.");
+            List<Task> loadedTaskList = storage.loadTaskList();
+            taskList = new TaskList(loadedTaskList);
+            Ui.printLoadTaskList();
         } catch (FileNotFoundException e) {
-            System.out.println("./data.txt does not exist. Starting from an empty task list.");
+            Ui.handleDataTxtNotFound();
         }
-        System.out.println(SEPARATOR);
 
         String input;
         boolean hasExited = false;
@@ -73,59 +85,23 @@ public class Panorama {
         while (!hasExited && scanner.hasNext()) {
             try {
                 input = scanner.nextLine();
-                String[] tokens = input.split(" ");
-                Command command = Command.fromString(tokens[0]);
-
-                switch (command) {
-                    case MARK:
-                        taskManager.markTask(tokens[1]);
-                        break;
-                    case UNMARK:
-                        taskManager.unmarkTask(tokens[1]);
-                        break;
-                    case BYE:
-                        exit_greeting();
-                        hasExited = true;
-                        break;
-                    case LIST:
-                        taskManager.listEntries();
-                        break;
-                    case TODO:
-                        taskManager.addTodoTask(input);
-                        break;
-                    case DEADLINE:
-                        taskManager.addDeadlineTask(input);
-                        break;
-                    case EVENT:
-                        taskManager.addEventTask(input);
-                        break;
-                    case DELETE:
-                        taskManager.deleteTask(tokens[1]);
-                        break;
-                    case HELP:
-                        display_help();
-                        break;
-                    default:
-                        throw new UnknownCommandException();
-                }
+                hasExited = handleCommand(input);
             } catch (EmptyDescriptionException e) {
-                System.out.println(INDENT + "The task description cannot be empty.");
-                System.out.println(SEPARATOR);
+                Ui.handleEmptyDescriptionException();                  
             } catch (UnknownCommandException e) {
-                System.out.println(INDENT + "Unknown command.");
-                System.out.println(SEPARATOR);
+                Ui.handleUnknownCommandException();
             } catch (DateTimeParseException e) {
-                System.out.println(INDENT + "Invalid date");
-                System.out.println(SEPARATOR);
+                Ui.handleDateTimeParseException();
             }
         }
 
         // Save task list to file after exiting
         try {
-            taskManager.saveTaskList();
-            System.out.println("Successfully saved to file.");
+            List<Task> memory = taskList.getMemory();
+            storage.saveTaskList(memory);
+            Ui.printSavedToFile();
         } catch (IOException e) {
-            System.out.println("Error in saving to file.");
+            Ui.handleFileSavingException();
         }
     }
 }
