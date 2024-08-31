@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 # Compile all Java files
-javac MyException/*.java MyTask/*.java Panorama.java
+javac -J-Duser.language=en **/*.java
 
 # Run the Panorama class
-java Panorama
+java duke.Panorama
 

@@ -1,4 +1,4 @@
-package MyException;
+package duke.MyException;
 
 public class InvalidDateException extends Exception {
     public InvalidDateException() {

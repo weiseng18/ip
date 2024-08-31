@@ -1,3 +1,5 @@
+package duke;
+
 public class Ui {
     // Constants
     public static final String SEPARATOR = "    ____________________________________________________________";

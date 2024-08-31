@@ -1,13 +1,13 @@
-package Parser;
+package duke.Parser;
 
 import java.time.LocalDateTime;
 
-import MyTask.Task;
-import MyTask.Todo;
-import MyTask.Deadline;
-import MyTask.Event;
+import duke.MyTask.Task;
+import duke.MyTask.Todo;
+import duke.MyTask.Deadline;
+import duke.MyTask.Event;
 
-import MyException.EmptyDescriptionException;
+import duke.MyException.EmptyDescriptionException;
 
 public class Parser {
     public static Task parseTodoInput(String input) throws EmptyDescriptionException {
