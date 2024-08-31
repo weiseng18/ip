@@ -68,34 +68,35 @@ public class Panorama {
             try {
                 input = scanner.nextLine();
                 String[] tokens = input.split(" ");
+                Command command = Command.fromString(tokens[0]);
 
-                switch (tokens[0]) {
-                    case "mark":
+                switch (command) {
+                    case MARK:
                         taskManager.markTask(tokens[1]);
                         break;
-                    case "unmark":
+                    case UNMARK:
                         taskManager.unmarkTask(tokens[1]);
                         break;
-                    case "bye":
+                    case BYE:
                         exit_greeting();
                         hasExited = true;
                         break;
-                    case "list":
+                    case LIST:
                         taskManager.listEntries();
                         break;
-                    case "todo":
+                    case TODO:
                         taskManager.addTodoTask(input);
                         break;
-                    case "deadline":
+                    case DEADLINE:
                         taskManager.addDeadlineTask(input);
                         break;
-                    case "event":
+                    case EVENT:
                         taskManager.addEventTask(input);
                         break;
-                    case "delete":
+                    case DELETE:
                         taskManager.deleteTask(tokens[1]);
                         break;
-                    case "help":
+                    case HELP:
                         display_help();
                         break;
                     default:
