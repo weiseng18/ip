@@ -102,6 +102,22 @@ public class Panorama {
         System.out.println(separator);
     }
 
+    static void display_help() {
+        System.out.println(separator);
+
+        System.out.println(indent + "list");
+        System.out.println(indent + "bye");
+
+        System.out.println(indent + "todo (description)");
+        System.out.println(indent + "deadline (description) /by (date_string)");
+        System.out.println(indent + "event (description) /from (date_string) /to (date_string)");
+
+        System.out.println(indent + "mark (task_id)");
+        System.out.println(indent + "unmark (task_id)");
+        System.out.println(indent + "delete (task_id)");
+
+        System.out.println(separator);
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -176,6 +192,9 @@ public class Panorama {
                         break;
                     case "delete":
                         delete_task(tokens[1]);
+                        break;
+                    case "help":
+                        display_help();
                         break;
                     default:
                         throw new UnknownCommandException();
