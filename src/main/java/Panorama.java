@@ -21,61 +21,61 @@ import MyException.UnknownCommandException;
 public class Panorama {
 
     // Constants
-    static final String separator = "    ____________________________________________________________";
-    static final String indent = "     "; // 5 spaces
+    static final String SEPARATOR = "    ____________________________________________________________";
+    static final String INDENT = "     "; // 5 spaces
     static final String SAVE_FILE_NAME = "./data.txt";
     // Memory
     static List<Task> memory;
 
     static void welcome_greeting() {
-        System.out.println(separator);
-        System.out.println(indent + "Hello! I'm Panorama");
-        System.out.println(indent + "What can I do for you?");
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
+        System.out.println(INDENT + "Hello! I'm Panorama");
+        System.out.println(INDENT + "What can I do for you?");
+        System.out.println(SEPARATOR);
     }
 
     static void exit_greeting() {
         String exit_statement = "Bye. Hope to see you again soon!";
-        System.out.println(separator);
-        System.out.println(indent + exit_statement);
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
+        System.out.println(INDENT + exit_statement);
+        System.out.println(SEPARATOR);
     }
 
     static void add_todo(String name) {
         memory.add(new Todo(name));
 
-        System.out.println(separator);
-        System.out.println(indent + "Added task:");
-        System.out.println(indent + memory.get(memory.size() - 1));
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
+        System.out.println(INDENT + "Added task:");
+        System.out.println(INDENT + memory.get(memory.size() - 1));
+        System.out.println(SEPARATOR);
     }
 
     static void add_deadline(String name, String date) {
         memory.add(new Deadline(name, date));
 
-        System.out.println(separator);
-        System.out.println(indent + "Added task:");
-        System.out.println(indent + memory.get(memory.size() - 1));
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
+        System.out.println(INDENT + "Added task:");
+        System.out.println(INDENT + memory.get(memory.size() - 1));
+        System.out.println(SEPARATOR);
     }
 
     static void add_event(String name, String from, String to) {
         memory.add(new Event(name, from, to));
 
-        System.out.println(separator);
-        System.out.println(indent + "Added task:");
-        System.out.println(indent + memory.get(memory.size() - 1));
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
+        System.out.println(INDENT + "Added task:");
+        System.out.println(INDENT + memory.get(memory.size() - 1));
+        System.out.println(SEPARATOR);
     }
 
     static void list_entries() {
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
         for (int i = 0; i < memory.size(); i++) {
             int num = i + 1;
-            System.out.print(indent + num + ". ");
+            System.out.print(INDENT + num + ". ");
             System.out.println(memory.get(i));
         }
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
     }
 
     static void mark_task(String string_id) {
@@ -85,10 +85,10 @@ public class Panorama {
         // because input is 1-indexed
         memory.get(id - 1).setIsDone(true);
 
-        System.out.println(separator);
-        System.out.println(indent + mark_statement);
-        System.out.println(indent + memory.get(id - 1));
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
+        System.out.println(INDENT + mark_statement);
+        System.out.println(INDENT + memory.get(id - 1));
+        System.out.println(SEPARATOR);
     }
 
     static void unmark_task(String string_id) {
@@ -98,10 +98,10 @@ public class Panorama {
         // because input is 1-indexed
         memory.get(id - 1).setIsDone(false);
 
-        System.out.println(separator);
-        System.out.println(indent + unmark_statement);
-        System.out.println(indent + memory.get(id - 1));
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
+        System.out.println(INDENT + unmark_statement);
+        System.out.println(INDENT + memory.get(id - 1));
+        System.out.println(SEPARATOR);
     }
 
     static void delete_task(String string_id) {
@@ -113,27 +113,27 @@ public class Panorama {
         // because input is 1-indexed
         memory.remove(id - 1);
 
-        System.out.println(separator);
-        System.out.println(indent + delete_statement);
-        System.out.println(indent + t);
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
+        System.out.println(INDENT + delete_statement);
+        System.out.println(INDENT + t);
+        System.out.println(SEPARATOR);
     }
 
     static void display_help() {
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
 
-        System.out.println(indent + "list");
-        System.out.println(indent + "bye");
+        System.out.println(INDENT + "list");
+        System.out.println(INDENT + "bye");
 
-        System.out.println(indent + "todo (description)");
-        System.out.println(indent + "deadline (description) /by (date_string)");
-        System.out.println(indent + "event (description) /from (date_string) /to (date_string)");
+        System.out.println(INDENT + "todo (description)");
+        System.out.println(INDENT + "deadline (description) /by (date_string)");
+        System.out.println(INDENT + "event (description) /from (date_string) /to (date_string)");
 
-        System.out.println(indent + "mark (task_id)");
-        System.out.println(indent + "unmark (task_id)");
-        System.out.println(indent + "delete (task_id)");
+        System.out.println(INDENT + "mark (task_id)");
+        System.out.println(INDENT + "unmark (task_id)");
+        System.out.println(INDENT + "delete (task_id)");
 
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
     }
 
     /**
@@ -186,7 +186,7 @@ public class Panorama {
         } catch (FileNotFoundException e) {
             System.out.println("./data.txt does not exist. Starting from an empty task list.");
         }
-        System.out.println(separator);
+        System.out.println(SEPARATOR);
 
         String input;
         boolean hasExited = false;
@@ -263,11 +263,11 @@ public class Panorama {
                         throw new UnknownCommandException();
                 }
             } catch (EmptyDescriptionException e) {
-                System.out.println(indent + "The task description cannot be empty.");
-                System.out.println(separator);
+                System.out.println(INDENT + "The task description cannot be empty.");
+                System.out.println(SEPARATOR);
             } catch (UnknownCommandException e) {
-                System.out.println(indent + "Unknown command.");
-                System.out.println(separator);
+                System.out.println(INDENT + "Unknown command.");
+                System.out.println(SEPARATOR);
             }
         }
 
