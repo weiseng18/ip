@@ -1,10 +1,14 @@
 import java.util.Scanner;
+import java.util.List;
 
 import java.util.Locale;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.time.format.DateTimeParseException;
+
+// Task folder
+import MyTask.Task;
 
 // Exceptions folder
 import MyException.EmptyDescriptionException;
@@ -15,8 +19,6 @@ public class Panorama {
     // Constants
     public static final String SEPARATOR = "    ____________________________________________________________";
     public static final String INDENT = "     "; // 5 spaces
-
-    static TaskList taskList;
 
     static void welcome_greeting() {
         System.out.println(SEPARATOR);
@@ -51,7 +53,8 @@ public class Panorama {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        taskList = new TaskList();
+        TaskList taskList = new TaskList();;
+        Storage storage = new Storage();
 
         // force locale
         Locale.setDefault(Locale.ENGLISH);
@@ -60,7 +63,8 @@ public class Panorama {
 
         // Check for past data
         try {
-            taskList.loadTaskList();
+            List<Task> loadedTaskList = storage.loadTaskList();
+            taskList = new TaskList(loadedTaskList);
             System.out.println("Successfully loaded task list.");
         } catch (FileNotFoundException e) {
             System.out.println("./data.txt does not exist. Starting from an empty task list.");
@@ -122,7 +126,8 @@ public class Panorama {
 
         // Save task list to file after exiting
         try {
-            taskList.saveTaskList();
+            List<Task> memory = taskList.getMemory();
+            storage.saveTaskList(memory);
             System.out.println("Successfully saved to file.");
         } catch (IOException e) {
             System.out.println("Error in saving to file.");

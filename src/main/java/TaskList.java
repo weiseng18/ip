@@ -1,17 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.Scanner;
-
 import java.time.LocalDateTime;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.File;
-import java.io.FileNotFoundException;
-
-// Parser foler
+// Parser folder
 import Parser.DateParser;
 
 // Exceptions folder
@@ -24,13 +16,14 @@ import MyTask.Deadline;
 import MyTask.Event;
 
 public class TaskList {
-    // Constants
-    private static final String SAVE_FILE_NAME = "./data.txt";
-
     private List<Task> memory;
 
     public TaskList() {
         memory = new ArrayList<>();
+    }
+
+    public TaskList(List<Task> list) {
+        memory = list;
     }
 
     void addTodoTask(String input) throws EmptyDescriptionException {
@@ -112,42 +105,7 @@ public class TaskList {
         System.out.println(Panorama.SEPARATOR);
     }
 
-    /**
-     * Load task list from ./data.txt.
-     * If non-existent, assume that there is no past data.
-     */
-    void loadTaskList() throws FileNotFoundException {
-        File myFile = new File(SAVE_FILE_NAME);
-        Scanner myReader = new Scanner(myFile);
-        while (myReader.hasNextLine()) {
-            String task = myReader.nextLine();
-            // Note that | is a special char in regex
-            String[] tokens = task.split("\\|");
-
-            if (tokens[0].equals("T")) {
-                memory.add(new Todo(tokens[2]));
-            } else if (tokens[0].equals("D")) {
-                LocalDateTime date = DateParser.parse(tokens[3]);
-                memory.add(new Deadline(tokens[2], date));
-            } else {
-                LocalDateTime from = DateParser.parse(tokens[3]);
-                LocalDateTime to = DateParser.parse(tokens[4]);
-                memory.add(new Event(tokens[2], from, to));
-            }
-
-            // Set marked/unmarked correctly
-            memory.get(memory.size() - 1).setIsDone(tokens[1].equals("1"));
-        }
-    }
-
-    /**
-     * Save current task list to ./data.txt.
-     */
-    void saveTaskList() throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(SAVE_FILE_NAME));
-        for (int i = 0; i < memory.size(); i++) {
-            writer.write(memory.get(i).toFileString() + "\n");
-        }
-        writer.close();
+    List<Task> getMemory() {
+        return memory;
     }
 }
