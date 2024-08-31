@@ -145,6 +145,10 @@ public class Panorama {
                         add_todo(name);
                         break;
                     case "deadline":
+                        if (input.length() <= 9) {
+                            throw new EmptyDescriptionException();
+                        }
+
                         contents = input.substring(9);
 
                         content_tokens = contents.split(" /by ");
@@ -154,6 +158,10 @@ public class Panorama {
                         add_deadline(name, date);
                         break;
                     case "event":
+                        if (input.length() <= 6) {
+                            throw new EmptyDescriptionException();
+                        }
+
                         contents = input.substring(6);
 
                         content_tokens = contents.split(" /from ");
