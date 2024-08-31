@@ -126,7 +126,7 @@ public class TaskManager {
             }
 
             // Set marked/unmarked correctly
-            memory.get(memory.size() - 1).setIsDone(tokens[1] == "1");
+            memory.get(memory.size() - 1).setIsDone(tokens[1].equals("1"));
         }
     }
 
