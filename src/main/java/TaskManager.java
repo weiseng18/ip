@@ -3,11 +3,16 @@ import java.util.List;
 
 import java.util.Scanner;
 
+import java.time.LocalDateTime;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
+
+// Parser foler
+import Parser.DateParser;
 
 // Exceptions folder
 import MyException.EmptyDescriptionException;
@@ -41,9 +46,10 @@ public class TaskManager {
         if (input.length() <= 9) {
             throw new EmptyDescriptionException();
         }
+
         String[] contentTokens = input.substring(9).split(" /by ");
         String name = contentTokens[0];
-        String date = contentTokens[1];
+        LocalDateTime date = DateParser.parse(contentTokens[1]);
         memory.add(new Deadline(name, date));
         printTaskAdded(memory.size() - 1);
     }
@@ -54,9 +60,10 @@ public class TaskManager {
         }
         String[] contentTokens = input.substring(6).split(" /from ");
         String name = contentTokens[0];
+
         String[] dateRange = contentTokens[1].split(" /to ");
-        String from = dateRange[0];
-        String to = dateRange[1];
+        LocalDateTime from = DateParser.parse(dateRange[0]);
+        LocalDateTime to = DateParser.parse(dateRange[1]);
         memory.add(new Event(name, from, to));
         printTaskAdded(memory.size() - 1);
     }
@@ -120,9 +127,12 @@ public class TaskManager {
             if (tokens[0].equals("T")) {
                 memory.add(new Todo(tokens[2]));
             } else if (tokens[0].equals("D")) {
-                memory.add(new Deadline(tokens[2], tokens[3]));
+                LocalDateTime date = DateParser.parse(tokens[3]);
+                memory.add(new Deadline(tokens[2], date));
             } else {
-                memory.add(new Event(tokens[2], tokens[3], tokens[4]));
+                LocalDateTime from = DateParser.parse(tokens[3]);
+                LocalDateTime to = DateParser.parse(tokens[4]);
+                memory.add(new Event(tokens[2], from, to));
             }
 
             // Set marked/unmarked correctly

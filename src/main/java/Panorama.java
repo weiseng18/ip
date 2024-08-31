@@ -1,7 +1,10 @@
 import java.util.Scanner;
 
+import java.util.Locale;
+
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.time.format.DateTimeParseException;
 
 // Exceptions folder
 import MyException.EmptyDescriptionException;
@@ -49,6 +52,9 @@ public class Panorama {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         taskManager = new TaskManager();
+
+        // force locale
+        Locale.setDefault(Locale.ENGLISH);
 
         welcome_greeting();
 
@@ -107,6 +113,9 @@ public class Panorama {
                 System.out.println(SEPARATOR);
             } catch (UnknownCommandException e) {
                 System.out.println(INDENT + "Unknown command.");
+                System.out.println(SEPARATOR);
+            } catch (DateTimeParseException e) {
+                System.out.println(INDENT + "Invalid date");
                 System.out.println(SEPARATOR);
             }
         }

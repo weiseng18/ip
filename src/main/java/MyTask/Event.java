@@ -1,19 +1,27 @@
 package MyTask;
 
-public class Event extends Task {
-    String from, to;
+import Parser.DateParser;
 
-    public Event(String name, String from, String to) {
+import java.time.LocalDateTime;
+
+public class Event extends Task {
+    LocalDateTime from, to;
+
+    public Event(String name, LocalDateTime from, LocalDateTime to) {
         super(name, 'E');
         this.from = from;
         this.to = to;
     }
 
     public String toFileString() {
-        return super.toFileString() + "|" + from + "|" + to;
+        String dateFrom = DateParser.formatForHardDisk(from);
+        String dateTo = DateParser.formatForHardDisk(to);
+        return super.toFileString() + "|" + dateFrom + "|" + dateTo;
     }
 
     public String toString() {
-        return super.toString() + " (from: " + from + " to: " + to + ")";
+        String dateFrom = DateParser.format(from);
+        String dateTo = DateParser.format(to);
+        return super.toString() + " (from: " + dateFrom + " to: " + dateTo + ")";
     }
 }
