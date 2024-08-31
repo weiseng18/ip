@@ -23,13 +23,13 @@ import MyTask.Todo;
 import MyTask.Deadline;
 import MyTask.Event;
 
-public class TaskManager {
+public class TaskList {
     // Constants
     private static final String SAVE_FILE_NAME = "./data.txt";
 
     private List<Task> memory;
 
-    public TaskManager() {
+    public TaskList() {
         memory = new ArrayList<>();
     }
 

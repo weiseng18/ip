@@ -16,7 +16,7 @@ public class Panorama {
     public static final String SEPARATOR = "    ____________________________________________________________";
     public static final String INDENT = "     "; // 5 spaces
 
-    static TaskManager taskManager;
+    static TaskList taskList;
 
     static void welcome_greeting() {
         System.out.println(SEPARATOR);
@@ -51,7 +51,7 @@ public class Panorama {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        taskManager = new TaskManager();
+        taskList = new TaskList();
 
         // force locale
         Locale.setDefault(Locale.ENGLISH);
@@ -60,7 +60,7 @@ public class Panorama {
 
         // Check for past data
         try {
-            taskManager.loadTaskList();
+            taskList.loadTaskList();
             System.out.println("Successfully loaded task list.");
         } catch (FileNotFoundException e) {
             System.out.println("./data.txt does not exist. Starting from an empty task list.");
@@ -78,29 +78,29 @@ public class Panorama {
 
                 switch (command) {
                     case MARK:
-                        taskManager.markTask(tokens[1]);
+                        taskList.markTask(tokens[1]);
                         break;
                     case UNMARK:
-                        taskManager.unmarkTask(tokens[1]);
+                        taskList.unmarkTask(tokens[1]);
                         break;
                     case BYE:
                         exit_greeting();
                         hasExited = true;
                         break;
                     case LIST:
-                        taskManager.listEntries();
+                        taskList.listEntries();
                         break;
                     case TODO:
-                        taskManager.addTodoTask(input);
+                        taskList.addTodoTask(input);
                         break;
                     case DEADLINE:
-                        taskManager.addDeadlineTask(input);
+                        taskList.addDeadlineTask(input);
                         break;
                     case EVENT:
-                        taskManager.addEventTask(input);
+                        taskList.addEventTask(input);
                         break;
                     case DELETE:
-                        taskManager.deleteTask(tokens[1]);
+                        taskList.deleteTask(tokens[1]);
                         break;
                     case HELP:
                         display_help();
@@ -122,7 +122,7 @@ public class Panorama {
 
         // Save task list to file after exiting
         try {
-            taskManager.saveTaskList();
+            taskList.saveTaskList();
             System.out.println("Successfully saved to file.");
         } catch (IOException e) {
             System.out.println("Error in saving to file.");
