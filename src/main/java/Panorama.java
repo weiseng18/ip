@@ -131,7 +131,7 @@ public class Panorama {
      * If non-existent, assume that there is no past data.
      */
     static void load_task_list() throws FileNotFoundException {
-        File myFile = new File("./data.txt");
+        File myFile = new File(SAVE_FILE_NAME);
         Scanner myReader = new Scanner(myFile);
         while (myReader.hasNextLine()) {
             String task = myReader.nextLine();
