@@ -1,4 +1,4 @@
-package MyTask;
+package duke.MyTask;
 
 public abstract class Task {
     String name;

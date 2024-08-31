@@ -1,3 +1,5 @@
+package duke;
+
 import java.util.Scanner;
 import java.util.List;
 
@@ -8,11 +10,11 @@ import java.io.FileNotFoundException;
 import java.time.format.DateTimeParseException;
 
 // Task folder
-import MyTask.Task;
+import duke.MyTask.Task;
 
 // Exceptions folder
-import MyException.EmptyDescriptionException;
-import MyException.UnknownCommandException;
+import duke.MyException.EmptyDescriptionException;
+import duke.MyException.UnknownCommandException;
 
 public class Panorama {
     static TaskList taskList;

@@ -1,20 +1,16 @@
+package duke;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import java.time.LocalDateTime;
-
 // Parser folder
-import Parser.Parser;
-import Parser.DateParser;
+import duke.Parser.Parser;
 
 // Exceptions folder
-import MyException.EmptyDescriptionException;
+import duke.MyException.EmptyDescriptionException;
 
 // Task folder
-import MyTask.Task;
-import MyTask.Todo;
-import MyTask.Deadline;
-import MyTask.Event;
+import duke.MyTask.Task;
 
 public class TaskList {
     private List<Task> memory;

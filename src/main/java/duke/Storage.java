@@ -1,3 +1,5 @@
+package duke;
+
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -11,13 +13,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 // Parser folder
-import Parser.DateParser;
+import duke.Parser.DateParser;
 
 // Task folder
-import MyTask.Task;
-import MyTask.Todo;
-import MyTask.Deadline;
-import MyTask.Event;
+import duke.MyTask.Task;
+import duke.MyTask.Todo;
+import duke.MyTask.Deadline;
+import duke.MyTask.Event;
 
 public class Storage {
     // Constants
