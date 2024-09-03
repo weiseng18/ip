@@ -89,7 +89,7 @@ public class Panorama {
                 input = scanner.nextLine();
                 hasExited = handleCommand(input);
             } catch (EmptyDescriptionException e) {
-                Ui.handleEmptyDescriptionException();                  
+                Ui.handleEmptyDescriptionException();
             } catch (UnknownCommandException e) {
                 Ui.handleUnknownCommandException();
             } catch (DateTimeParseException e) {

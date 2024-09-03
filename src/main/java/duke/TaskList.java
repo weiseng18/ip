@@ -77,7 +77,7 @@ public class TaskList {
         System.out.println(Ui.INDENT + task);
         System.out.println(Ui.SEPARATOR);
     }
-    
+
     private void printTaskAdded(int index) {
         System.out.println(Ui.SEPARATOR);
         System.out.println(Ui.INDENT + "Added task:");
