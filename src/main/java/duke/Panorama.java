@@ -28,35 +28,35 @@ public class Panorama {
         Command command = Command.fromString(tokens[0]);
 
         switch (command) {
-            case MARK:
-                taskList.markTask(tokens[1]);
-                break;
-            case UNMARK:
-                taskList.unmarkTask(tokens[1]);
-                break;
-            case BYE:
-                ui.exit_greeting();
-                return true;
-            case LIST:
-                taskList.listEntries();
-                break;
-            case TODO:
-                taskList.addTodoTask(input);
-                break;
-            case DEADLINE:
-                taskList.addDeadlineTask(input);
-                break;
-            case EVENT:
-                taskList.addEventTask(input);
-                break;
-            case DELETE:
-                taskList.deleteTask(tokens[1]);
-                break;
-            case HELP:
-                ui.display_help();
-                break;
-            default:
-                throw new UnknownCommandException();
+        case MARK:
+            taskList.markTask(tokens[1]);
+            break;
+        case UNMARK:
+            taskList.unmarkTask(tokens[1]);
+            break;
+        case BYE:
+            ui.exit_greeting();
+            return true;
+        case LIST:
+            taskList.listEntries();
+            break;
+        case TODO:
+            taskList.addTodoTask(input);
+            break;
+        case DEADLINE:
+            taskList.addDeadlineTask(input);
+            break;
+        case EVENT:
+            taskList.addEventTask(input);
+            break;
+        case DELETE:
+            taskList.deleteTask(tokens[1]);
+            break;
+        case HELP:
+            ui.display_help();
+            break;
+        default:
+            throw new UnknownCommandException();
         }
 
         return false;
