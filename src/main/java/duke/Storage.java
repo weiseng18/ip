@@ -21,13 +21,19 @@ import duke.MyTask.Todo;
 import duke.MyTask.Deadline;
 import duke.MyTask.Event;
 
+/**
+ * Handles loading and saving of tasks from/to a file.
+ */
 public class Storage {
     // Constants
     private static final String SAVE_FILE_NAME = "./data.txt";
 
     /**
-     * Load task list from ./data.txt.
-     * If non-existent, assume that there is no past data.
+     * Loads the task list from the file specified by {@code SAVE_FILE_NAME}.
+     * If the file does not exist, it returns an empty list.
+     *
+     * @return A list of {@code Task} objects loaded from the file.
+     * @throws FileNotFoundException If the file is not found.
      */
     List<Task> loadTaskList() throws FileNotFoundException {
         File myFile = new File(SAVE_FILE_NAME);
@@ -60,7 +66,10 @@ public class Storage {
     }
 
     /**
-     * Save current task list to ./data.txt.
+     * Saves the current list of tasks to the file specified by {@code SAVE_FILE_NAME}.
+     *
+     * @param memory The list of {@code Task} objects to be saved.
+     * @throws IOException If an I/O error occurs while writing to the file.
      */
     void saveTaskList(List<Task> memory) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(SAVE_FILE_NAME));
@@ -69,5 +78,4 @@ public class Storage {
         }
         writer.close();
     }
-
 }

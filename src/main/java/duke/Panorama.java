@@ -2,7 +2,6 @@ package duke;
 
 import java.util.Scanner;
 import java.util.List;
-
 import java.util.Locale;
 
 import java.io.IOException;
@@ -16,12 +15,22 @@ import duke.MyTask.Task;
 import duke.MyException.EmptyDescriptionException;
 import duke.MyException.UnknownCommandException;
 
+/**
+ * Main class for the Panorama application.
+ * Handles user interactions, command processing, and task management.
+ */
 public class Panorama {
     static TaskList taskList;
     static Ui ui;
 
     /**
-     * @return true if BYE command was executed, false otherwise
+     * Handles user commands by parsing the input string and executing the corresponding actions.
+     * Recognizes commands such as MARK, UNMARK, BYE, LIST, TODO, DEADLINE, EVENT, DELETE, and HELP.
+     *
+     * @param input The user command input string.
+     * @return true if the BYE command was executed, false otherwise.
+     * @throws EmptyDescriptionException If a task command lacks a description.
+     * @throws UnknownCommandException If the command is not recognized.
      */
     static boolean handleCommand(String input) throws EmptyDescriptionException, UnknownCommandException {
         String[] tokens = input.split(" ");
@@ -62,6 +71,12 @@ public class Panorama {
         return false;
     }
 
+    /**
+     * Main method to run the Panorama application.
+     * Initializes the task list, loads previous tasks, handles user input, and saves tasks before exiting.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         taskList = new TaskList();
@@ -107,3 +122,4 @@ public class Panorama {
         }
     }
 }
+
