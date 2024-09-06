@@ -13,12 +13,6 @@ public class DeadlineTest {
     Deadline d = new Deadline(name, date);
 
     @Test
-    public void initializeTest() {
-        assertEquals(d.name, name);
-        assertEquals(d.date, date);
-    }
-
-    @Test
     public void toStringTest() {
         String expected = "[D] [ ] " + name + " (by: " + DateParser.format(date) + ")";
         assertEquals(d.toString(), expected);

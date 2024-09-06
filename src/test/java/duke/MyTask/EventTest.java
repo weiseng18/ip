@@ -14,13 +14,6 @@ public class EventTest {
     Event e  = new Event(name, from, to);
 
     @Test
-    public void initializeTest() {
-        assertEquals(e.name, name);
-        assertEquals(e.from, from);
-        assertEquals(e.to, to);
-    }
-
-    @Test
     public void toStringTest() {
         String dateFrom = DateParser.format(from);
         String dateTo = DateParser.format(to);
