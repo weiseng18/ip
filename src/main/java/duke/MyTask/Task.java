@@ -5,9 +5,9 @@ package duke.MyTask;
  * Subclasses should extend this class to define specific types of tasks.
  */
 public abstract class Task {
-    String name;
-    boolean isDone;
-    char c;
+    private String name;
+    private boolean isDone;
+    private char c;
 
     /**
      * Constructs a {@code Task} with the specified name and type.

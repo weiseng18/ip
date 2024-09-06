@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * An event task has a start date and time and an end date and time.
  */
 public class Event extends Task {
-    LocalDateTime from, to;
+    private LocalDateTime from, to;
 
     /**
      * Constructs an {@code Event} task with the specified name, start date, and end date.

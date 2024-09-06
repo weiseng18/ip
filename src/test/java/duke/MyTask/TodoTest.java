@@ -8,11 +8,6 @@ public class TodoTest {
     Todo t = new Todo(name);
 
     @Test
-    public void initializeTest() {
-        assertEquals(t.name, name);
-    }
-
-    @Test
     public void toStringTest() {
         String expected = "[T] [ ] " + name;
         assertEquals(t.toString(), expected);

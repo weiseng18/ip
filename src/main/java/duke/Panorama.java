@@ -20,8 +20,8 @@ import duke.MyException.UnknownCommandException;
  * Handles user interactions, command processing, and task management.
  */
 public class Panorama {
-    static TaskList taskList;
-    static Ui ui;
+    private static TaskList taskList;
+    private static Ui ui;
 
     /**
      * Handles user commands by parsing the input string and executing the corresponding actions.
