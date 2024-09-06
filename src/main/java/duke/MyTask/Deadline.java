@@ -5,7 +5,7 @@ import duke.Parser.DateParser;
 import java.time.LocalDateTime;
 
 public class Deadline extends Task {
-    LocalDateTime date;
+    private LocalDateTime date;
 
     public Deadline(String name, LocalDateTime date) {
         super(name, 'D');

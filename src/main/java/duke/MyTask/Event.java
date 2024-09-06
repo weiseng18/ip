@@ -5,7 +5,7 @@ import duke.Parser.DateParser;
 import java.time.LocalDateTime;
 
 public class Event extends Task {
-    LocalDateTime from, to;
+    private LocalDateTime from, to;
 
     public Event(String name, LocalDateTime from, LocalDateTime to) {
         super(name, 'E');

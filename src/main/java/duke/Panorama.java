@@ -17,8 +17,8 @@ import duke.MyException.EmptyDescriptionException;
 import duke.MyException.UnknownCommandException;
 
 public class Panorama {
-    static TaskList taskList;
-    static Ui ui;
+    private static TaskList taskList;
+    private static Ui ui;
 
     /**
      * @return true if BYE command was executed, false otherwise

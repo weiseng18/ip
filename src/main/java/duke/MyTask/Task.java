@@ -1,9 +1,9 @@
 package duke.MyTask;
 
 public abstract class Task {
-    String name;
-    boolean isDone;
-    char c;
+    private String name;
+    private boolean isDone;
+    private char c;
 
     public Task(String name, char c) {
         this.name = name;
