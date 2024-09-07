@@ -21,7 +21,6 @@ import duke.MyException.UnknownCommandException;
  */
 public class Panorama {
     private static TaskList taskList;
-    private static Ui ui;
 
     /**
      * Handles user commands by parsing the input string and executing the corresponding actions.
@@ -44,7 +43,7 @@ public class Panorama {
             taskList.unmarkTask(tokens[1]);
             break;
         case BYE:
-            ui.exit_greeting();
+            Ui.exit_greeting();
             return true;
         case LIST:
             taskList.listEntries();
@@ -62,7 +61,7 @@ public class Panorama {
             taskList.deleteTask(tokens[1]);
             break;
         case HELP:
-            ui.display_help();
+            Ui.display_help();
             break;
         case FIND:
             taskList.find(tokens[1]);
@@ -88,7 +87,7 @@ public class Panorama {
         // force locale
         Locale.setDefault(Locale.ENGLISH);
 
-        ui.welcome_greeting();
+        Ui.welcome_greeting();
 
         // Check for past data
         try {
