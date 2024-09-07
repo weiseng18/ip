@@ -1,5 +1,7 @@
 package duke; // same package as the class being tested
 
+import java.util.List;
+
 import duke.MyTask.Task;
 import duke.MyTask.Todo;
 
@@ -46,6 +48,14 @@ public class CommandHandlerTest {
         // Assert that the task is now unmarked
         t = taskList.getMemory().get(0);
         assertEquals(false, t.getIsDone());
+    }
+
+    @Test
+    public void handleDeleteTest() {
+        TaskList taskList = initTaskList();
+        taskList.deleteTask(0);
+        int size = taskList.getMemory().size();
+        assertEquals(0, size);
     }
 }
 
