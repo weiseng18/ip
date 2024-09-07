@@ -7,19 +7,19 @@ package duke.MyTask;
 public abstract class Task {
     private String name;
     private boolean isDone;
-    private char c;
+    private char taskType;
 
     /**
      * Constructs a {@code Task} with the specified name and type.
      * The task is initialized as not done.
      *
      * @param name The name or description of the task.
-     * @param c The type of the task, represented as a character.
+     * @param taskType The type of the task, represented as a character.
      */
-    public Task(String name, char c) {
+    public Task(String name, char taskType) {
         this.name = name;
         this.isDone = false;
-        this.c = c;
+        this.taskType = taskType;
     }
 
     /**
@@ -39,7 +39,7 @@ public abstract class Task {
      */
     public String toFileString() {
         String output = "";
-        output += c;
+        output += taskType;
         output += "|";
         output += this.isDone ? "1" : "0";
         output += "|";
@@ -55,7 +55,7 @@ public abstract class Task {
      */
     public String toString() {
         String output = "";
-        output += "[" + c + "]";
+        output += "[" + taskType + "]";
         output += " ";
         output += this.isDone ? "[x]" : "[ ]";
         output += " ";
