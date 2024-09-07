@@ -1,6 +1,5 @@
 package duke.MyException;
 
-import duke.Ui;
 import duke.Message;
 
 /**
@@ -13,6 +12,6 @@ public class EmptyDescriptionException extends Exception {
      * Constructs a new {@code EmptyDescriptionException} with a default error message.
      */
     public EmptyDescriptionException() {
-        super(Ui.INDENT + Message.MyException.EMPTY_DESCRIPTION);
+        super(Message.MyException.EMPTY_DESCRIPTION);
     }
 }

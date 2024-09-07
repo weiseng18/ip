@@ -1,6 +1,5 @@
 package duke.MyException;
 
-import duke.Ui;
 import duke.Message;
 
 /**
@@ -13,6 +12,6 @@ public class UnknownCommandException extends Exception {
      * Constructs a new {@code UnknownCommandException} with a default error message.
      */
     public UnknownCommandException() {
-        super(Ui.INDENT + Message.MyException.UNKNOWN_COMMAND);
+        super(Message.MyException.UNKNOWN_COMMAND);
     }
 }

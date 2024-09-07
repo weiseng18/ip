@@ -1,6 +1,5 @@
 package duke.MyException;
 
-import duke.Ui;
 import duke.Message;
 
 /**
@@ -13,6 +12,6 @@ public class InvalidDateException extends Exception {
      * Constructs a new {@code InvalidDateException} with a default error message.
      */
     public InvalidDateException() {
-        super(Ui.INDENT + Message.MyException.INVALID_DATE);
+        super(Message.MyException.INVALID_DATE);
     }
 }

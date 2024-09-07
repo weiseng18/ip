@@ -57,12 +57,8 @@ public class Panorama {
                 CommandHandlerOutput o = CommandHandler.handleCommand(taskList, input);
                 taskList = o.taskList;
                 hasExited = o.isByeCommand;
-            } catch (EmptyDescriptionException e) {
-                Ui.handleEmptyDescriptionException();
-            } catch (UnknownCommandException e) {
-                Ui.handleUnknownCommandException();
-            } catch (DateTimeParseException e) {
-                Ui.handleDateTimeParseException();
+            } catch (EmptyDescriptionException | UnknownCommandException | DateTimeParseException e) {
+                System.out.println(Ui.INDENT + e.getMessage());
             }
         }
 
@@ -72,7 +68,7 @@ public class Panorama {
             storage.saveTaskList(memory);
             Ui.printSavedToFile();
         } catch (IOException e) {
-            Ui.handleFileSavingException();
+            System.out.println(Ui.INDENT + e.getMessage());
         }
     }
 }
