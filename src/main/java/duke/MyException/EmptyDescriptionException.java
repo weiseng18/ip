@@ -1,5 +1,7 @@
 package duke.MyException;
 
+import duke.Ui;
+
 /**
  * Thrown to indicate that a task description is empty.
  * This exception is used to signal that a user-provided input for a task
@@ -10,6 +12,6 @@ public class EmptyDescriptionException extends Exception {
      * Constructs a new {@code EmptyDescriptionException} with a default error message.
      */
     public EmptyDescriptionException() {
-        super("     Description cannot be empty.");
+        super(Ui.INDENT + "Description cannot be empty.");
     }
 }

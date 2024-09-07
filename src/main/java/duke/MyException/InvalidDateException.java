@@ -1,5 +1,7 @@
 package duke.MyException;
 
+import duke.Ui;
+
 /**
  * Thrown to indicate that an invalid date has been specified.
  * This exception is used to signal that the date provided by the user
@@ -10,6 +12,6 @@ public class InvalidDateException extends Exception {
      * Constructs a new {@code InvalidDateException} with a default error message.
      */
     public InvalidDateException() {
-        super("     Invalid date specified.");
+        super(Ui.INDENT + "Invalid date specified.");
     }
 }

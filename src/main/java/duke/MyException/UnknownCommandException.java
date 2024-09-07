@@ -1,5 +1,7 @@
 package duke.MyException;
 
+import duke.Ui;
+
 /**
  * Thrown to indicate that an unknown command has been issued.
  * This exception is used to signal that the user has entered a command
@@ -10,6 +12,6 @@ public class UnknownCommandException extends Exception {
      * Constructs a new {@code UnknownCommandException} with a default error message.
      */
     public UnknownCommandException() {
-        super("     Unknown command.");
+        super(Ui.INDENT + "Unknown command.");
     }
 }
