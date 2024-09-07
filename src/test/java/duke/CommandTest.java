@@ -11,7 +11,7 @@ public class CommandTest {
 
         // Note that Command constructor is private.
         Command result = Command.fromString(command);
-        assertNotEquals(result, null);
+        assertNotEquals(null, result);
     }
 
     @Test
@@ -19,7 +19,7 @@ public class CommandTest {
         String command = "invalid command name";
 
         Command result = Command.fromString(command);
-        assertEquals(result, null);
+        assertEquals(null, result);
     }
 }
 

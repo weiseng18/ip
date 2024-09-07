@@ -10,12 +10,12 @@ public class TodoTest {
     @Test
     public void toStringTest() {
         String expected = "[T] [ ] " + name;
-        assertEquals(t.toString(), expected);
+        assertEquals(expected, t.toString());
     }
 
     @Test
     public void toFileStringTest() {
         String expected = "T|0|" + name;
-        assertEquals(t.toFileString(), expected);
+        assertEquals(expected, t.toFileString());
     }
 }

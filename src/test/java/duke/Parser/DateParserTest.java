@@ -16,7 +16,7 @@ public class DateParserTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
         LocalDateTime expected = LocalDateTime.parse(dateStr, formatter);
 
-        assertEquals(DateParser.parse(dateStr), expected);
+        assertEquals(expected, DateParser.parse(dateStr));
     }
 
     @Test
@@ -30,6 +30,6 @@ public class DateParserTest {
         });
 
         String expectedMessage = "Text '" + dateStr + "' could not be parsed at index 0";
-        assertEquals(e.getMessage(), expectedMessage);
+        assertEquals(expectedMessage, e.getMessage());
     }
 }

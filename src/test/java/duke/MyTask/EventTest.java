@@ -18,7 +18,7 @@ public class EventTest {
         String dateFrom = DateParser.format(from);
         String dateTo = DateParser.format(to);
         String expected = "[E] [ ] " + name + " (from: " + dateFrom + " to: " + dateTo + ")";
-        assertEquals(e.toString(), expected);
+        assertEquals(expected, e.toString());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class EventTest {
         String dateFrom = DateParser.formatForHardDisk(from);
         String dateTo = DateParser.formatForHardDisk(to);
         String expected = "E|0|" + name + "|" + dateFrom + "|" + dateTo;
-        assertEquals(e.toFileString(), expected);
+        assertEquals(expected, e.toFileString());
     }
 }
 

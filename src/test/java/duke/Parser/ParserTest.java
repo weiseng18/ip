@@ -18,7 +18,7 @@ public class ParserTest {
             Task t = Parser.parseTodoInput(input);
 
             Todo expected = new Todo(name);
-            assertEquals(t.toString(), expected.toString());
+            assertEquals(expected.toString(), t.toString());
         } catch (Exception e) {}
     }
 
@@ -31,6 +31,6 @@ public class ParserTest {
         });
 
         String expectedMessage = "Description cannot be empty.";
-        assertEquals(e.getMessage(), expectedMessage);
+        assertEquals(expectedMessage, e.getMessage());
     }
 }

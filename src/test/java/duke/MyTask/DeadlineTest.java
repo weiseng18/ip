@@ -15,13 +15,13 @@ public class DeadlineTest {
     @Test
     public void toStringTest() {
         String expected = "[D] [ ] " + name + " (by: " + DateParser.format(date) + ")";
-        assertEquals(d.toString(), expected);
+        assertEquals(expected, d.toString());
     }
 
     @Test
     public void toFileStringTest() {
         String expected = "D|0|" + name + "|" + DateParser.formatForHardDisk(date);
-        assertEquals(d.toFileString(), expected);
+        assertEquals(expected, d.toFileString());
     }
 }
 
