@@ -8,14 +8,8 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.time.format.DateTimeParseException;
 
-// Parser folder
-import duke.Parser.Parser;
-
 // Task folder
 import duke.MyTask.Task;
-import duke.MyTask.Todo;
-import duke.MyTask.Deadline;
-import duke.MyTask.Event;
 
 // Exceptions folder
 import duke.MyException.EmptyDescriptionException;
@@ -27,65 +21,6 @@ import duke.MyException.UnknownCommandException;
  */
 public class Panorama {
     private static TaskList taskList;
-
-    /**
-     * Handles user commands by parsing the input string and executing the corresponding actions.
-     * Recognizes commands such as MARK, UNMARK, BYE, LIST, TODO, DEADLINE, EVENT, DELETE, HELP, and FIND.
-     *
-     * @param input The user command input string.
-     * @return true if the BYE command was executed, false otherwise.
-     * @throws EmptyDescriptionException If a task command lacks a description.
-     * @throws UnknownCommandException If the command is not recognized.
-     */
-    static boolean handleCommand(String input) throws EmptyDescriptionException, UnknownCommandException {
-        String[] tokens = input.split(" ");
-        Command command = Command.fromString(tokens[0]);
-
-        int id;
-
-        switch (command) {
-        case MARK:
-            id = Integer.parseInt(tokens[1]) - 1;
-            taskList.markTask(id);
-            break;
-        case UNMARK:
-            id = Integer.parseInt(tokens[1]) - 1;
-            taskList.unmarkTask(id);
-            break;
-        case BYE:
-            Ui.printExitGreeting();
-            return true;
-        case LIST:
-            taskList.listEntries();
-            break;
-        case TODO:
-            Todo t = Parser.parseTodoInput(input);
-            taskList.addTask(t);
-            break;
-        case DEADLINE:
-            Deadline d = Parser.parseDeadlineInput(input);
-            taskList.addTask(d);
-            break;
-        case EVENT:
-            Event e = Parser.parseEventInput(input);
-            taskList.addTask(e);
-            break;
-        case DELETE:
-            id = Integer.parseInt(tokens[1]) - 1;
-            taskList.deleteTask(id);
-            break;
-        case HELP:
-            Ui.display_help();
-            break;
-        case FIND:
-            taskList.find(tokens[1]);
-            break;
-        default:
-            throw new UnknownCommandException();
-        }
-
-        return false;
-    }
 
     /**
      * Main method to run the Panorama application.
@@ -118,7 +53,10 @@ public class Panorama {
         while (!hasExited && scanner.hasNext()) {
             try {
                 input = scanner.nextLine();
-                hasExited = handleCommand(input);
+
+                CommandHandlerOutput o = CommandHandler.handleCommand(taskList, input);
+                taskList = o.taskList;
+                hasExited = o.isByeCommand;
             } catch (EmptyDescriptionException e) {
                 Ui.handleEmptyDescriptionException();
             } catch (UnknownCommandException e) {
