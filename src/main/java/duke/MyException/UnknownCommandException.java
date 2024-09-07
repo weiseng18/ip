@@ -1,6 +1,7 @@
 package duke.MyException;
 
 import duke.Ui;
+import duke.Message;
 
 /**
  * Thrown to indicate that an unknown command has been issued.
@@ -12,6 +13,6 @@ public class UnknownCommandException extends Exception {
      * Constructs a new {@code UnknownCommandException} with a default error message.
      */
     public UnknownCommandException() {
-        super(Ui.INDENT + "Unknown command.");
+        super(Ui.INDENT + Message.MyException.UNKNOWN_COMMAND);
     }
 }
