@@ -136,6 +136,37 @@ public class TaskList {
         System.out.println(Ui.SEPARATOR);
     }
 
+    void find(String keyword) {
+        List<Task> result = new ArrayList<>();
+        for (Task t: memory) {
+            String name = t.getName();
+            String[] words = name.split(" ");
+
+            boolean found = false;
+            for (String word: words) {
+                if (word.equals(keyword)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                result.add(t);
+            }
+        }
+
+        // NOTE: Assume that the ID for delete is still based on the global list.
+
+        System.out.println(Ui.SEPARATOR);
+        System.out.println(Ui.INDENT + "Here are the matching tasks in your list:");
+        for (int i = 0; i < result.size(); i++) {
+            int num = i + 1;
+            System.out.print(Ui.INDENT + num + ". ");
+            System.out.println(result.get(i));
+        }
+        System.out.println(Ui.SEPARATOR);
+    }
+
     /**
      * Prints a message indicating that a task has been added.
      *
