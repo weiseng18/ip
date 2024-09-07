@@ -99,7 +99,7 @@ public class TaskList {
      */
     void markTask(String stringId) {
         int id = Integer.parseInt(stringId) - 1;
-        memory.get(id).setIsDone(true);
+        memory.get(id).setDone(true);
         System.out.println(Ui.SEPARATOR);
         System.out.println(Ui.INDENT + "Nice! I've marked this task as done:");
         System.out.println(Ui.INDENT + memory.get(id));
@@ -114,7 +114,7 @@ public class TaskList {
      */
     void unmarkTask(String stringId) {
         int id = Integer.parseInt(stringId) - 1;
-        memory.get(id).setIsDone(false);
+        memory.get(id).setDone(false);
         System.out.println(Ui.SEPARATOR);
         System.out.println(Ui.INDENT + "OK, I've marked this task as not done yet:");
         System.out.println(Ui.INDENT + memory.get(id));

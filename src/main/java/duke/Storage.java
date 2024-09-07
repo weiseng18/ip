@@ -59,7 +59,7 @@ public class Storage {
             }
 
             // Set marked/unmarked correctly
-            memory.get(memory.size() - 1).setIsDone(tokens[1].equals("1"));
+            memory.get(memory.size() - 1).setDone(tokens[1].equals("1"));
         }
 
         return memory;

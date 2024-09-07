@@ -27,8 +27,8 @@ public abstract class Task {
      *
      * @param status {@code true} if the task is completed, {@code false} otherwise.
      */
-    public void setIsDone(boolean status) {
-        this.isDone = status;
+    public void setDone(boolean isDone) {
+        this.isDone = isDone;
     }
 
     /**
