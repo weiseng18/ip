@@ -3,6 +3,7 @@ package duke.Parser; // same package as the class being tested
 import duke.MyTask.Task;
 import duke.MyTask.Todo;
 import duke.MyException.EmptyDescriptionException;
+import duke.Ui;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,7 +31,7 @@ public class ParserTest {
             Parser.parseTodoInput(input);
         });
 
-        String expectedMessage = "     Description cannot be empty.";
+        String expectedMessage = Ui.INDENT + "Description cannot be empty.";
         assertEquals(e.getMessage(), expectedMessage);
     }
 }
