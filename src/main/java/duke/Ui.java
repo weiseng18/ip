@@ -34,17 +34,18 @@ public class Ui {
     static void display_help() {
         System.out.println(SEPARATOR);
 
-        System.out.println(INDENT + "list");
-        System.out.println(INDENT + "find (description)");
-        System.out.println(INDENT + "bye");
+        System.out.println(INDENT + Message.CommandFormat.LIST);
+        System.out.println(INDENT + Message.CommandFormat.FIND);
 
-        System.out.println(INDENT + "todo (description)");
-        System.out.println(INDENT + "deadline (description) /by (date_string)");
-        System.out.println(INDENT + "event (description) /from (date_string) /to (date_string)");
+        System.out.println(INDENT + Message.CommandFormat.BYE);
 
-        System.out.println(INDENT + "mark (task_id)");
-        System.out.println(INDENT + "unmark (task_id)");
-        System.out.println(INDENT + "delete (task_id)");
+        System.out.println(INDENT + Message.CommandFormat.TODO);
+        System.out.println(INDENT + Message.CommandFormat.DEADLINE);
+        System.out.println(INDENT + Message.CommandFormat.EVENT);
+
+        System.out.println(INDENT + Message.CommandFormat.MARK);
+        System.out.println(INDENT + Message.CommandFormat.UNMARK);
+        System.out.println(INDENT + Message.CommandFormat.DELETE);
 
         System.out.println(SEPARATOR);
     }
@@ -65,14 +66,6 @@ public class Ui {
      */
     static void handleDataTxtNotFound() {
         sendMessage("./data.txt does not exist. Starting from an empty task list.");
-    }
-
-    /**
-     * Handles the exception where saving to the file fails.
-     * Prints an error message to the console.
-     */
-    static void handleFileSavingException() {
-        sendMessage("Error in saving to file.");
     }
 
     /**
