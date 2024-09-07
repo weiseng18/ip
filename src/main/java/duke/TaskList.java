@@ -36,7 +36,11 @@ public class TaskList {
      */
     void addTask(Task task) {
         memory.add(task);
-        printTaskAdded(memory.size() - 1);
+
+        System.out.println(Ui.SEPARATOR);
+        System.out.println(Ui.INDENT + "Added task:");
+        System.out.println(Ui.INDENT + memory.get(memory.size() - 1));
+        System.out.println(Ui.SEPARATOR);
     }
 
     /**
@@ -123,18 +127,6 @@ public class TaskList {
             System.out.print(Ui.INDENT + num + ". ");
             System.out.println(result.get(i));
         }
-        System.out.println(Ui.SEPARATOR);
-    }
-
-    /**
-     * Prints a message indicating that a task has been added.
-     *
-     * @param index The index of the task that was added.
-     */
-    private void printTaskAdded(int index) {
-        System.out.println(Ui.SEPARATOR);
-        System.out.println(Ui.INDENT + "Added task:");
-        System.out.println(Ui.INDENT + memory.get(index));
         System.out.println(Ui.SEPARATOR);
     }
 
