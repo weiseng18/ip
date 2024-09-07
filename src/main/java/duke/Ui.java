@@ -60,30 +60,6 @@ public class Ui {
     }
 
     /**
-     * Handles the exception where a task description is empty.
-     * Prints an error message to the console.
-     */
-    static void handleEmptyDescriptionException() {
-        sendMessage("The task description cannot be empty.");
-    }
-
-    /**
-     * Handles the exception where an unknown command is provided.
-     * Prints an error message to the console.
-     */
-    static void handleUnknownCommandException() {
-        sendMessage("Unknown command.");
-    }
-
-    /**
-     * Handles the exception where a date cannot be parsed.
-     * Prints an error message to the console.
-     */
-    static void handleDateTimeParseException() {
-        sendMessage("Invalid date.");
-    }
-
-    /**
      * Handles the situation where the data.txt file is not found.
      * Prints a message indicating that an empty task list is being started.
      */
