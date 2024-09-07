@@ -20,7 +20,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void parseExceptionTest() {
+    public void parseDateTimeParseExceptionTest() {
         String dateStr = "abcdef";
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");

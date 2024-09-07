@@ -23,7 +23,7 @@ public class ParserTest {
     }
 
     @Test
-    public void parseExceptionTest() {
+    public void parseEmptyDescriptionExceptionTest() {
         String input = "todo";
 
         EmptyDescriptionException e = assertThrows(EmptyDescriptionException.class, () -> {
