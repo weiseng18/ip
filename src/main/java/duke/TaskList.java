@@ -3,14 +3,8 @@ package duke;
 import java.util.ArrayList;
 import java.util.List;
 
-// Exceptions folder
-import duke.MyException.EmptyDescriptionException;
-
 // Task folder
 import duke.MyTask.Task;
-import duke.MyTask.Todo;
-import duke.MyTask.Deadline;
-import duke.MyTask.Event;
 
 /**
  * Manages a list of {@code Task} objects.
@@ -36,40 +30,11 @@ public class TaskList {
     }
 
     /**
-     * Adds a {@code Todo} task to the list.
-     * The input should be in the format "todo `name`", where `name` is the description of the task.
+     * Adds a {@code Task} to the list.
      *
-     * @param input The user input string to be parsed.
-     * @throws EmptyDescriptionException If the input does not contain a task description.
+     * @param Task The task to be added.
      */
-    void addTodoTask(Todo task) throws EmptyDescriptionException {
-        memory.add(task);
-        printTaskAdded(memory.size() - 1);
-    }
-
-    /**
-     * Adds a {@code Deadline} task to the list.
-     * The input should be in the format "deadline `name` /by `date`", where `name` is the description
-     * of the task and `date` is the due date.
-     *
-     * @param input The user input string to be parsed.
-     * @throws EmptyDescriptionException If the input does not contain a task description or date.
-     */
-    void addDeadlineTask(Deadline task) throws EmptyDescriptionException {
-        memory.add(task);
-        printTaskAdded(memory.size() - 1);
-    }
-
-    /**
-     * Adds an {@code Event} task to the list.
-     * The input should be in the format "event `name` /from `start_date` /to `end_date`",
-     * where `name` is the description of the task, `start_date` is the start date and time,
-     * and `end_date` is the end date and time.
-     *
-     * @param input The user input string to be parsed.
-     * @throws EmptyDescriptionException If the input does not contain a task description or dates.
-     */
-    void addEventTask(Event task) throws EmptyDescriptionException {
+    void addTask(Task task) {
         memory.add(task);
         printTaskAdded(memory.size() - 1);
     }

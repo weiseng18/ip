@@ -60,15 +60,15 @@ public class Panorama {
             break;
         case TODO:
             Todo t = Parser.parseTodoInput(input);
-            taskList.addTodoTask(t);
+            taskList.addTask(t);
             break;
         case DEADLINE:
             Deadline d = Parser.parseDeadlineInput(input);
-            taskList.addDeadlineTask(d);
+            taskList.addTask(d);
             break;
         case EVENT:
             Event e = Parser.parseEventInput(input);
-            taskList.addEventTask(e);
+            taskList.addTask(e);
             break;
         case DELETE:
             id = Integer.parseInt(tokens[1]) - 1;
