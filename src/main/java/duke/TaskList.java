@@ -94,8 +94,7 @@ public class TaskList {
      *
      * @param stringId The index of the task to be marked as done.
      */
-    void markTask(String stringId) {
-        int id = Integer.parseInt(stringId) - 1;
+    void markTask(int id) {
         memory.get(id).setDone(true);
         System.out.println(Ui.SEPARATOR);
         System.out.println(Ui.INDENT + "Nice! I've marked this task as done:");
@@ -109,8 +108,7 @@ public class TaskList {
      *
      * @param stringId The index of the task to be marked as not done.
      */
-    void unmarkTask(String stringId) {
-        int id = Integer.parseInt(stringId) - 1;
+    void unmarkTask(int id) {
         memory.get(id).setDone(false);
         System.out.println(Ui.SEPARATOR);
         System.out.println(Ui.INDENT + "OK, I've marked this task as not done yet:");
@@ -124,8 +122,7 @@ public class TaskList {
      *
      * @param stringId The index of the task to be deleted.
      */
-    void deleteTask(String stringId) {
-        int id = Integer.parseInt(stringId) - 1;
+    void deleteTask(int id) {
         Task task = memory.remove(id);
         System.out.println(Ui.SEPARATOR);
         System.out.println(Ui.INDENT + "Noted. I've removed this task:");

@@ -41,12 +41,16 @@ public class Panorama {
         String[] tokens = input.split(" ");
         Command command = Command.fromString(tokens[0]);
 
+        int id;
+
         switch (command) {
         case MARK:
-            taskList.markTask(tokens[1]);
+            id = Integer.parseInt(tokens[1]) - 1;
+            taskList.markTask(id);
             break;
         case UNMARK:
-            taskList.unmarkTask(tokens[1]);
+            id = Integer.parseInt(tokens[1]) - 1;
+            taskList.unmarkTask(id);
             break;
         case BYE:
             Ui.printExitGreeting();
@@ -67,7 +71,8 @@ public class Panorama {
             taskList.addEventTask(e);
             break;
         case DELETE:
-            taskList.deleteTask(tokens[1]);
+            id = Integer.parseInt(tokens[1]) - 1;
+            taskList.deleteTask(id);
             break;
         case HELP:
             Ui.display_help();
