@@ -43,7 +43,7 @@ public class Panorama {
             taskList.unmarkTask(tokens[1]);
             break;
         case BYE:
-            Ui.exit_greeting();
+            Ui.printExitGreeting();
             return true;
         case LIST:
             taskList.listEntries();
@@ -87,7 +87,7 @@ public class Panorama {
         // force locale
         Locale.setDefault(Locale.ENGLISH);
 
-        Ui.welcome_greeting();
+        Ui.printWelcomeGreeting();
 
         // Check for past data
         try {
