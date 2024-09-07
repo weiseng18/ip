@@ -38,4 +38,8 @@ public abstract class Task {
         output += this.name;
         return output;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }

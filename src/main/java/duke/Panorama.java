@@ -55,6 +55,9 @@ public class Panorama {
         case HELP:
             ui.display_help();
             break;
+        case FIND:
+            taskList.find(tokens[1]);
+            break;
         default:
             throw new UnknownCommandException();
         }

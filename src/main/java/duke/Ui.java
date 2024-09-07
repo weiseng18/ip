@@ -23,6 +23,7 @@ public class Ui {
         System.out.println(SEPARATOR);
 
         System.out.println(INDENT + "list");
+        System.out.println(INDENT + "find (description)");
         System.out.println(INDENT + "bye");
 
         System.out.println(INDENT + "todo (description)");

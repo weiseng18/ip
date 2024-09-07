@@ -9,7 +9,8 @@ public enum Command {
     DEADLINE("deadline"),
     EVENT("event"),
     DELETE("delete"),
-    HELP("help");
+    HELP("help"),
+    FIND("find");
 
     private String command;
 
