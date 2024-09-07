@@ -25,7 +25,7 @@ public class Panorama {
 
     /**
      * Handles user commands by parsing the input string and executing the corresponding actions.
-     * Recognizes commands such as MARK, UNMARK, BYE, LIST, TODO, DEADLINE, EVENT, DELETE, and HELP.
+     * Recognizes commands such as MARK, UNMARK, BYE, LIST, TODO, DEADLINE, EVENT, DELETE, HELP, and FIND.
      *
      * @param input The user command input string.
      * @return true if the BYE command was executed, false otherwise.
