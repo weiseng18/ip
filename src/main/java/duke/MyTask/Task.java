@@ -66,4 +66,8 @@ public abstract class Task {
     public String getName() {
         return this.name;
     }
+
+    public boolean getIsDone() {
+        return this.isDone;
+    }
 }
