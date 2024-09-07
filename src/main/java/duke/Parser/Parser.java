@@ -23,7 +23,7 @@ public class Parser {
      * @return A {@code Todo} task with the specified `name`.
      * @throws EmptyDescriptionException If the input does not contain a task description.
      */
-    public static Task parseTodoInput(String input) throws EmptyDescriptionException {
+    public static Todo parseTodoInput(String input) throws EmptyDescriptionException {
         if (input.length() <= 5) {
             throw new EmptyDescriptionException();
         }
@@ -40,7 +40,7 @@ public class Parser {
      * @return A {@code Deadline} task with the specified `name` and due `date`.
      * @throws EmptyDescriptionException If the input does not contain a task description or date.
      */
-    public static Task parseDeadlineInput(String input) throws EmptyDescriptionException {
+    public static Deadline parseDeadlineInput(String input) throws EmptyDescriptionException {
         if (input.length() <= 9) {
             throw new EmptyDescriptionException();
         }
@@ -61,7 +61,7 @@ public class Parser {
      * @return An {@code Event} task with the specified `name`, `start_date`, and `end_date`.
      * @throws EmptyDescriptionException If the input does not contain a task description or dates.
      */
-    public static Task parseEventInput(String input) throws EmptyDescriptionException {
+    public static Event parseEventInput(String input) throws EmptyDescriptionException {
         if (input.length() <= 6) {
             throw new EmptyDescriptionException();
         }
