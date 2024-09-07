@@ -25,15 +25,14 @@ public class CommandHandler {
         Command command = Command.fromString(tokens[0]);
 
         int id;
+        TaskList nextList = prevList;
 
         switch (command) {
         case MARK:
-            id = Integer.parseInt(tokens[1]) - 1;
-            prevList.markTask(id);
+            nextList = handleMark(nextList, tokens);
             break;
         case UNMARK:
-            id = Integer.parseInt(tokens[1]) - 1;
-            prevList.unmarkTask(id);
+            nextList = handleUnmark(nextList, tokens);
             break;
         case BYE:
             Ui.printExitGreeting();
@@ -42,31 +41,67 @@ public class CommandHandler {
             prevList.listEntries();
             break;
         case TODO:
-            Todo t = Parser.parseTodoInput(input);
-            prevList.addTask(t);
+            handleTodo(nextList, input);
             break;
         case DEADLINE:
-            Deadline d = Parser.parseDeadlineInput(input);
-            prevList.addTask(d);
+            handleDeadline(nextList, input);
             break;
         case EVENT:
-            Event e = Parser.parseEventInput(input);
-            prevList.addTask(e);
+            handleEvent(nextList, input);
             break;
         case DELETE:
-            id = Integer.parseInt(tokens[1]) - 1;
-            prevList.deleteTask(id);
+            nextList = handleDelete(nextList, tokens);
             break;
         case HELP:
             Ui.display_help();
             break;
         case FIND:
-            prevList.find(tokens[1]);
+            handleFind(nextList, tokens);
             break;
         default:
             throw new UnknownCommandException();
         }
 
         return new CommandHandlerOutput(prevList, false);
+    }
+
+    static TaskList handleMark(TaskList list, String[] tokens) {
+        int id = Integer.parseInt(tokens[1]) - 1;
+        list.markTask(id);
+        return list;
+    }
+
+    static TaskList handleUnmark(TaskList list, String[] tokens) {
+        int id = Integer.parseInt(tokens[1]) - 1;
+        list.unmarkTask(id);
+        return list;
+    }
+
+    static TaskList handleTodo(TaskList list, String input) throws EmptyDescriptionException {
+        Todo t = Parser.parseTodoInput(input);
+        list.addTask(t);
+        return list;
+    }
+
+    static TaskList handleDeadline(TaskList list, String input) throws EmptyDescriptionException {
+        Deadline t = Parser.parseDeadlineInput(input);
+        list.addTask(t);
+        return list;
+    }
+
+    static TaskList handleEvent(TaskList list, String input) throws EmptyDescriptionException {
+        Event t = Parser.parseEventInput(input);
+        list.addTask(t);
+        return list;
+    }
+
+    static TaskList handleDelete(TaskList list, String[] tokens) {
+        int id = Integer.parseInt(tokens[1]) - 1;
+        list.deleteTask(id);
+        return list;
+    }
+
+    static void handleFind(TaskList list, String[] tokens) {
+        list.find(tokens[1]);
     }
 }
