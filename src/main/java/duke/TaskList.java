@@ -3,14 +3,14 @@ package duke;
 import java.util.ArrayList;
 import java.util.List;
 
-// Parser folder
-import duke.Parser.Parser;
-
 // Exceptions folder
 import duke.MyException.EmptyDescriptionException;
 
 // Task folder
 import duke.MyTask.Task;
+import duke.MyTask.Todo;
+import duke.MyTask.Deadline;
+import duke.MyTask.Event;
 
 /**
  * Manages a list of {@code Task} objects.
@@ -42,9 +42,8 @@ public class TaskList {
      * @param input The user input string to be parsed.
      * @throws EmptyDescriptionException If the input does not contain a task description.
      */
-    void addTodoTask(String input) throws EmptyDescriptionException {
-        Task t = Parser.parseTodoInput(input);
-        memory.add(t);
+    void addTodoTask(Todo task) throws EmptyDescriptionException {
+        memory.add(task);
         printTaskAdded(memory.size() - 1);
     }
 
@@ -56,9 +55,8 @@ public class TaskList {
      * @param input The user input string to be parsed.
      * @throws EmptyDescriptionException If the input does not contain a task description or date.
      */
-    void addDeadlineTask(String input) throws EmptyDescriptionException {
-        Task t = Parser.parseDeadlineInput(input);
-        memory.add(t);
+    void addDeadlineTask(Deadline task) throws EmptyDescriptionException {
+        memory.add(task);
         printTaskAdded(memory.size() - 1);
     }
 
@@ -71,9 +69,8 @@ public class TaskList {
      * @param input The user input string to be parsed.
      * @throws EmptyDescriptionException If the input does not contain a task description or dates.
      */
-    void addEventTask(String input) throws EmptyDescriptionException {
-        Task t = Parser.parseEventInput(input);
-        memory.add(t);
+    void addEventTask(Event task) throws EmptyDescriptionException {
+        memory.add(task);
         printTaskAdded(memory.size() - 1);
     }
 

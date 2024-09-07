@@ -8,8 +8,14 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.time.format.DateTimeParseException;
 
+// Parser folder
+import duke.Parser.Parser;
+
 // Task folder
 import duke.MyTask.Task;
+import duke.MyTask.Todo;
+import duke.MyTask.Deadline;
+import duke.MyTask.Event;
 
 // Exceptions folder
 import duke.MyException.EmptyDescriptionException;
@@ -49,13 +55,16 @@ public class Panorama {
             taskList.listEntries();
             break;
         case TODO:
-            taskList.addTodoTask(input);
+            Todo t = Parser.parseTodoInput(input);
+            taskList.addTodoTask(t);
             break;
         case DEADLINE:
-            taskList.addDeadlineTask(input);
+            Deadline d = Parser.parseDeadlineInput(input);
+            taskList.addDeadlineTask(d);
             break;
         case EVENT:
-            taskList.addEventTask(input);
+            Event e = Parser.parseEventInput(input);
+            taskList.addEventTask(e);
             break;
         case DELETE:
             taskList.deleteTask(tokens[1]);
