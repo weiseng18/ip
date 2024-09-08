@@ -22,7 +22,6 @@ public class CommandHandler {
         String[] tokens = input.split(" ");
         Command command = Command.fromString(tokens[0]);
 
-        int id;
         TaskList nextList = prevList;
 
         switch (command) {
