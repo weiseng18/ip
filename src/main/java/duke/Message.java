@@ -1,12 +1,24 @@
 package duke;
 
+/**
+ * The {@code Message} class contains constant strings that represent various messages and command formats used.
+ */
 public class Message {
+
+    /**
+     * The {@code MyException} class contains constant error messages used
+     * throughout the application to describe various exceptions.
+     */
     public class MyException {
         public static final String EMPTY_DESCRIPTION = "Description cannot be empty.";
         public static final String INVALID_DATE = "Invalid date specified.";
         public static final String UNKNOWN_COMMAND = "Unknown command.";
     }
 
+    /**
+     * The {@code CommandFormat} class contains constant strings that define
+     * the format for various commands accepted by the application.
+     */
     public class CommandFormat {
         // task listing
         public static final String LIST = "list";
