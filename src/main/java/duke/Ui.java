@@ -13,8 +13,8 @@ public class Ui {
      */
     static void printWelcomeGreeting() {
         System.out.println(SEPARATOR);
-        System.out.println(INDENT + "Hello! I'm Panorama");
-        System.out.println(INDENT + "What can I do for you?");
+        System.out.println(INDENT + Message.Greeting.STARTUP_STATEMENT_ONE);
+        System.out.println(INDENT + Message.Greeting.STARTUP_STATEMENT_TWO);
         System.out.println(SEPARATOR);
     }
 
@@ -22,9 +22,8 @@ public class Ui {
      * Displays the exit greeting message.
      */
     static void printExitGreeting() {
-        String exitStatement = "Bye. Hope to see you again soon!";
         System.out.println(SEPARATOR);
-        System.out.println(INDENT + exitStatement);
+        System.out.println(INDENT + Message.Greeting.EXIT_STATEMENT);
         System.out.println(SEPARATOR);
     }
 

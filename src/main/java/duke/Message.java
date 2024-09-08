@@ -36,4 +36,15 @@ public class Message {
         public static final String UNMARK = "unmark (task_id)";
         public static final String DELETE = "delete (task_id)";
     }
+
+    /**
+     * The {@code Greeting} class contains constant strings that the application
+     * prints upon startup and exit.
+     */
+    public class Greeting {
+        public static final String STARTUP_STATEMENT_ONE = "Hello! I'm Panorama";
+        public static final String STARTUP_STATEMENT_TWO = "What can I do for you?";
+
+        public static final String EXIT_STATEMENT = "Bye. Hope to see you again soon!";
+    }
 }
