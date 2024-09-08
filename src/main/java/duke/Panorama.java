@@ -51,8 +51,8 @@ public class Panorama {
                 input = scanner.nextLine();
 
                 CommandHandlerOutput o = CommandHandler.handleCommand(taskList, input);
-                taskList = o.taskList;
-                hasExited = o.isByeCommand;
+                taskList = o.getTaskList();
+                hasExited = o.isByeCommand();
             } catch (EmptyDescriptionException | UnknownCommandException | DateTimeParseException e) {
                 System.out.println(Ui.INDENT + e.getMessage());
             }
