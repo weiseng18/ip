@@ -22,9 +22,9 @@ public class Ui {
      * Displays the exit greeting message.
      */
     static void printExitGreeting() {
-        String exit_statement = "Bye. Hope to see you again soon!";
+        String exitStatement = "Bye. Hope to see you again soon!";
         System.out.println(SEPARATOR);
-        System.out.println(INDENT + exit_statement);
+        System.out.println(INDENT + exitStatement);
         System.out.println(SEPARATOR);
     }
 
