@@ -2,12 +2,10 @@ package duke.Parser;
 
 import java.time.LocalDateTime;
 
-import duke.MyTask.Task;
-import duke.MyTask.Todo;
+import duke.MyException.EmptyDescriptionException;
 import duke.MyTask.Deadline;
 import duke.MyTask.Event;
-
-import duke.MyException.EmptyDescriptionException;
+import duke.MyTask.Todo;
 
 /**
  * Parses user input to create {@code Task} objects.

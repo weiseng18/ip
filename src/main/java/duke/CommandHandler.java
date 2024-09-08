@@ -1,13 +1,11 @@
 package duke;
 
-import duke.MyTask.Todo;
-import duke.MyTask.Deadline;
-import duke.MyTask.Event;
-
-import duke.Parser.Parser;
-
 import duke.MyException.EmptyDescriptionException;
 import duke.MyException.UnknownCommandException;
+import duke.MyTask.Deadline;
+import duke.MyTask.Event;
+import duke.MyTask.Todo;
+import duke.Parser.Parser;
 
 public class CommandHandler {
     /**

@@ -1,25 +1,20 @@
 package duke;
 
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
-
-import java.time.LocalDateTime;
-
 import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-// Parser folder
-import duke.Parser.DateParser;
-
-// Task folder
-import duke.MyTask.Task;
-import duke.MyTask.Todo;
 import duke.MyTask.Deadline;
 import duke.MyTask.Event;
+import duke.MyTask.Task;
+import duke.MyTask.Todo;
+import duke.Parser.DateParser;
 
 /**
  * Handles loading and saving of tasks from/to a file.

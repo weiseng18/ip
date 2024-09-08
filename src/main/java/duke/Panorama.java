@@ -1,19 +1,15 @@
 package duke;
 
-import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
-import java.io.IOException;
-import java.io.FileNotFoundException;
-import java.time.format.DateTimeParseException;
-
-// Task folder
-import duke.MyTask.Task;
-
-// Exceptions folder
 import duke.MyException.EmptyDescriptionException;
 import duke.MyException.UnknownCommandException;
+import duke.MyTask.Task;
 
 /**
  * Main class for the Panorama application.

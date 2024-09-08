@@ -1,8 +1,8 @@
 package duke.MyTask;
 
-import duke.Parser.DateParser;
-
 import java.time.LocalDateTime;
+
+import duke.Parser.DateParser;
 
 /**
  * Represents a deadline task with a name and a due date.
