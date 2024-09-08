@@ -7,6 +7,11 @@ import duke.MyTask.Event;
 import duke.MyTask.Todo;
 import duke.Parser.Parser;
 
+/**
+ * The {@code CommandHandler} class is responsible for processing user commands.
+ * It parses input strings to identify commands and execute corresponding actions
+ * on the {@link TaskList}.
+ */
 public class CommandHandler {
     /**
      * Handles user commands by parsing the input string and executing the corresponding actions.
