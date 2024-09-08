@@ -14,11 +14,13 @@ public class CommandHandler {
      *
      * @param TaskList The previous task list
      * @param input The user command input string.
-     * @return {@code CommandHandlerOutput} The updated task list, and a boolean indicating whether the BYE command was executed.
+     * @return {@code CommandHandlerOutput} The updated task list, and
+     *        a boolean indicating whether the BYE command was executed.
      * @throws EmptyDescriptionException If a task command lacks a description.
      * @throws UnknownCommandException If the command is not recognized.
      */
-    static CommandHandlerOutput handleCommand(TaskList prevList, String input) throws EmptyDescriptionException, UnknownCommandException {
+    static CommandHandlerOutput handleCommand(TaskList prevList, String input)
+            throws EmptyDescriptionException, UnknownCommandException {
         String[] tokens = input.split(" ");
         Command command = Command.fromString(tokens[0]);
 
