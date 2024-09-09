@@ -3,11 +3,11 @@ package panorama.command;
 import panorama.TaskList;
 
 public class FindCommand implements Command {
+    public static final String COMMAND_WORD = "find";
+
     private TaskList taskList;
 
     private String keyword;
-
-    public static final String COMMAND_WORD = "find";
 
     public FindCommand(TaskList taskList, String keyword) {
         this.taskList = taskList;

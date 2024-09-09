@@ -4,11 +4,11 @@ import panorama.TaskList;
 import panorama.task.Task;
 
 public class MarkCommand implements Command {
+    public static final String COMMAND_WORD = "mark";
+
     private TaskList taskList;
 
     private int id;
-
-    public static final String COMMAND_WORD = "mark";
 
     public MarkCommand(TaskList taskList, int id) {
         this.taskList = taskList;

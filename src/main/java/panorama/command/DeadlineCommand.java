@@ -6,12 +6,12 @@ import panorama.TaskList;
 import panorama.task.Deadline;
 
 public class DeadlineCommand implements Command {
+    public static final String COMMAND_WORD = "deadline";
+
     private TaskList taskList;
 
     private String name;
     private LocalDate date;
-
-    public static final String COMMAND_WORD = "deadline";
 
     public DeadlineCommand(TaskList taskList, String name, LocalDate date) {
         this.taskList = taskList;

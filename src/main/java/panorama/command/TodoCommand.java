@@ -4,11 +4,11 @@ import panorama.TaskList;
 import panorama.task.Todo;
 
 public class TodoCommand implements Command {
+    public static final String COMMAND_WORD = "todo";
+
     private TaskList taskList;
 
     private String name;
-
-    public static final String COMMAND_WORD = "todo";
 
     public TodoCommand(TaskList taskList, String name) {
         this.taskList = taskList;

@@ -6,13 +6,13 @@ import panorama.TaskList;
 import panorama.task.Event;
 
 public class EventCommand implements Command {
+    public static final String COMMAND_WORD = "event";
+
     private TaskList taskList;
 
     private String name;
     private LocalDate from;
     private LocalDate to;
-
-    public static final String COMMAND_WORD = "event";
 
     public EventCommand(TaskList taskList, String name, LocalDate from, LocalDate to) {
         this.taskList = taskList;

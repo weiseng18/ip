@@ -4,11 +4,11 @@ import panorama.TaskList;
 import panorama.task.Task;
 
 public class DeleteCommand implements Command {
+    public static final String COMMAND_WORD = "delete";
+
     private TaskList taskList;
 
     private int id;
-
-    public static final String COMMAND_WORD = "delete";
 
     public DeleteCommand(TaskList taskList, int id) {
         this.taskList = taskList;
