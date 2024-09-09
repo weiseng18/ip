@@ -7,6 +7,7 @@ import panorama.command.Command;
 import panorama.command.DeadlineCommand;
 import panorama.command.DeleteCommand;
 import panorama.command.EventCommand;
+import panorama.command.FindCommand;
 import panorama.command.ListCommand;
 import panorama.command.MarkCommand;
 import panorama.command.TodoCommand;
@@ -86,6 +87,10 @@ public class Parser {
 
         case ListCommand.COMMAND_WORD: {
             return new ListCommand(taskList);
+        }
+
+        case FindCommand.COMMAND_WORD: {
+            return new FindCommand(taskList, rest);
         }
 
         case ByeCommand.COMMAND_WORD: {
