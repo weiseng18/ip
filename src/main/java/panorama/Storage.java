@@ -24,7 +24,7 @@ public class Storage {
      * Loads the task list from the file specified by {@code SAVE_FILE_NAME}.
      * If the file does not exist, it returns an empty {@code TaskList}.
      *
-     * @return A list of {@code Task} objects loaded from the file.
+     * @return A {@code TaskList} object containing tasks loaded from the file.
      * @throws FileNotFoundException If the file is not found.
      */
     TaskList loadTaskList() throws FileNotFoundException {
