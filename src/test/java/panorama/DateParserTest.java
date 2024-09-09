@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DateParserTest {
     @Test
-    public void parseTest() {
+    public void parse_validDate_success() {
         String dateStr = "2020-08-01";
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -20,7 +20,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void parseDateTimeParseExceptionTest() {
+    public void parse_invalidDate_exceptionThrown() {
         String dateStr = "abcdef";
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

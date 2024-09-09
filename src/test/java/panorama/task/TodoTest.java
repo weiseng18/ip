@@ -8,13 +8,13 @@ public class TodoTest {
     Todo t = new Todo(name);
 
     @Test
-    public void toStringTest() {
+    public void toString_success() {
         String expected = "[T] [ ] " + name;
         assertEquals(expected, t.toString());
     }
 
     @Test
-    public void toFileStringTest() {
+    public void toFileString_success() {
         String expected = "T|0|" + name;
         assertEquals(expected, t.toFileString());
     }
