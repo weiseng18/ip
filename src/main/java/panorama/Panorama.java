@@ -36,6 +36,15 @@ public class Panorama {
         parser = new Parser(taskList);
     }
 
+    public String getResponse(String input) {
+        try {
+            Command c = parser.parseCommand(input);
+            return c.execute();
+        } catch (UnknownCommandException | EmptyDescriptionException e) {
+            return e.getMessage();
+        }
+    }
+
     /**
      * Runs the Panorama application.
      * It starts the application's main loop, which reads user commands,
