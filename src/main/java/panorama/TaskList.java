@@ -1,5 +1,6 @@
 package panorama;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +12,15 @@ import panorama.task.Task;
  */
 public class TaskList {
     private List<Task> tasks;
+    private Storage storage;
 
     /**
      * Initializes an empty task list.
      */
     public TaskList() {
         tasks = new ArrayList<>();
+        storage = new Storage();
+        load();
     }
 
     /**
@@ -29,12 +33,35 @@ public class TaskList {
     }
 
     /**
+     * Saves the list of tasks to the data file.
+     */
+    private void save() {
+        try {
+            storage.saveTasks(tasks);
+        } catch (IOException e) {
+            System.out.println("Error saving tasks: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Loads the list of tasks from the data file.
+     */
+    private void load() {
+        try {
+            tasks = storage.loadTasks();
+        } catch (IOException e) {
+            System.out.println("Error loading tasks: " + e.getMessage());
+        }
+    }
+
+    /**
      * Adds a {@code Task} to the list.
      *
      * @param task The task to be added.
      */
     public void add(Task task) {
         tasks.add(task);
+        save();
     }
 
     /**
@@ -45,6 +72,7 @@ public class TaskList {
      */
     public void mark(int id) {
         tasks.get(id).setDone(true);
+        save();
     }
 
     /**
@@ -55,6 +83,7 @@ public class TaskList {
      */
     public void unmark(int id) {
         tasks.get(id).setDone(false);
+        save();
     }
 
     /**
@@ -64,7 +93,9 @@ public class TaskList {
      * @param id The index of the task to be deleted.
      */
     public Task delete(int id) {
-        return tasks.remove(id);
+        Task t = tasks.remove(id);
+        save();
+        return t;
     }
 
     /**
