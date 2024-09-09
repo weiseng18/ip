@@ -45,6 +45,10 @@ public class Panorama {
         }
     }
 
+    public String getWelcomeMessage() {
+        return ui.getWelcomeMessage();
+    }
+
     /**
      * Runs the Panorama application.
      * It starts the application's main loop, which reads user commands,
@@ -53,8 +57,6 @@ public class Panorama {
      * After exiting the loop, the current task list is saved to storage.
      */
     public void run() {
-        ui.showWelcome();
-
         boolean isExit = false;
         while (!isExit) {
             try {

@@ -16,8 +16,8 @@ public class Ui {
         System.out.println("____________________________________________________________");
     }
 
-    public void showWelcome() {
-        System.out.println("Hello! I'm Panorama\nWhat can I do for you?");
+    public String getWelcomeMessage() {
+        return "Hello! I'm Panorama\nWhat can I do for you?";
     }
 
     public void showError(String errMessage) {

@@ -33,6 +33,12 @@ public class MainWindow extends AnchorPane {
     /** Injects the Duke instance */
     public void setDuke(Panorama d) {
         duke = d;
+
+        // welcome message
+        String welcomeMessage = duke.getWelcomeMessage();
+        dialogContainer.getChildren().add(
+                DialogBox.getDukeDialog(welcomeMessage, dukeImage)
+        );
     }
 
     /**
