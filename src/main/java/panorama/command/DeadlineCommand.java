@@ -20,6 +20,11 @@ public class DeadlineCommand implements Command {
     }
 
     @Override
+    public boolean isBye() {
+        return false;
+    }
+
+    @Override
     public String execute() {
         Deadline deadline = new Deadline(name, date);
         taskList.add(deadline);

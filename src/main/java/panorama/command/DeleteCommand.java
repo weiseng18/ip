@@ -16,6 +16,11 @@ public class DeleteCommand implements Command {
     }
 
     @Override
+    public boolean isBye() {
+        return false;
+    }
+
+    @Override
     public String execute() {
         Task deletedTask = taskList.delete(id);
         return "Noted. I've removed this task:\n" + deletedTask.toString();

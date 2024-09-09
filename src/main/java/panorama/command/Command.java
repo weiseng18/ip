@@ -11,4 +11,11 @@ public interface Command {
      * @return A response that indicates the result of executing the command.
      */
     String execute();
+
+    /**
+     * Indicates if it is a bye command.
+     *
+     * @return true if {@code ByeCommand} and false otherwise
+     */
+    boolean isBye();
 }

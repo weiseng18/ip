@@ -16,6 +16,11 @@ public class TodoCommand implements Command {
     }
 
     @Override
+    public boolean isBye() {
+        return false;
+    }
+
+    @Override
     public String execute() {
         Todo todo = new Todo(name);
         taskList.add(todo);

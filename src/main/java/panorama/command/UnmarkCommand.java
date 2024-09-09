@@ -16,6 +16,11 @@ public class UnmarkCommand implements Command {
     }
 
     @Override
+    public boolean isBye() {
+        return false;
+    }
+
+    @Override
     public String execute() {
         taskList.unmark(id);
         Task task = taskList.get(id);

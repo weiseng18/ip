@@ -16,6 +16,11 @@ public class MarkCommand implements Command {
     }
 
     @Override
+    public boolean isBye() {
+        return false;
+    }
+
+    @Override
     public String execute() {
         taskList.mark(id);
         Task task = taskList.get(id);

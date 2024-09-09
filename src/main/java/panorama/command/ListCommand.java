@@ -12,6 +12,11 @@ public class ListCommand implements Command {
     }
 
     @Override
+    public boolean isBye() {
+        return false;
+    }
+
+    @Override
     public String execute() {
         return taskList.toString();
     }
