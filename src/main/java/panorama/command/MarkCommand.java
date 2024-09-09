@@ -24,6 +24,6 @@ public class MarkCommand implements Command {
     public String execute() {
         taskList.mark(id);
         Task task = taskList.get(id);
-        return "Nice! I've marked this task as done:" + task.toString();
+        return "Nice! I've marked this task as done:\n" + task.toString();
     }
 }
