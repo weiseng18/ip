@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import panorama.TaskList;
 import panorama.task.Event;
 
+/**
+ * Represents a command to add an event task to the task list.
+ */
 public class EventCommand implements Command {
     public static final String COMMAND_WORD = "event";
 
@@ -14,6 +17,14 @@ public class EventCommand implements Command {
     private LocalDate from;
     private LocalDate to;
 
+    /**
+     * Constructs an EventCommand with the specified task list, event name, and date range.
+     *
+     * @param taskList The task list to which the event task will be added.
+     * @param name     The name of the event task.
+     * @param from     The start date of the event.
+     * @param to       The end date of the event.
+     */
     public EventCommand(TaskList taskList, String name, LocalDate from, LocalDate to) {
         this.taskList = taskList;
         this.name = name;

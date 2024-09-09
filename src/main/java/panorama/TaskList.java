@@ -31,7 +31,7 @@ public class TaskList {
     /**
      * Adds a {@code Task} to the list.
      *
-     * @param Task The task to be added.
+     * @param task The task to be added.
      */
     public void add(Task task) {
         tasks.add(task);
@@ -41,7 +41,7 @@ public class TaskList {
      * Marks a task as done.
      * The task is identified by its index in the list.
      *
-     * @param stringId The index of the task to be marked as done.
+     * @param id The index of the task to be marked as done.
      */
     public void mark(int id) {
         tasks.get(id).setDone(true);
@@ -51,7 +51,7 @@ public class TaskList {
      * Marks a task as not done.
      * The task is identified by its index in the list.
      *
-     * @param stringId The index of the task to be marked as not done.
+     * @param id The index of the task to be marked as not done.
      */
     public void unmark(int id) {
         tasks.get(id).setDone(false);
@@ -61,7 +61,7 @@ public class TaskList {
      * Deletes a task from the list.
      * The task is identified by its index in the list.
      *
-     * @param stringId The index of the task to be deleted.
+     * @param id The index of the task to be deleted.
      */
     public Task delete(int id) {
         return tasks.remove(id);

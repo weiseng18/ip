@@ -1,5 +1,8 @@
 package panorama.command;
 
+/**
+ * Represents a command to exit the application.
+ */
 public class ByeCommand implements Command {
     public static final String COMMAND_WORD = "bye";
 

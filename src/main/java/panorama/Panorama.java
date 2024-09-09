@@ -7,12 +7,20 @@ import panorama.command.Command;
 import panorama.exception.EmptyDescriptionException;
 import panorama.exception.UnknownCommandException;
 
+/**
+ * Represents the main class for managing the Panorama application.
+ */
 public class Panorama {
     private Parser parser;
     private Storage storage;
     private TaskList taskList;
     private Ui ui;
 
+    /**
+     * Constructs a Panorama instance and initializes the application components.
+     * It sets up the storage, UI, and parser. If the task list cannot be loaded,
+     * an empty task list is initialized instead.
+     */
     public Panorama() {
         storage = new Storage();
         ui = new Ui();
@@ -28,6 +36,13 @@ public class Panorama {
         parser = new Parser(taskList);
     }
 
+    /**
+     * Runs the Panorama application.
+     * It starts the application's main loop, which reads user commands,
+     * parses them, executes the corresponding actions, and displays results.
+     * The loop continues until a "bye" command is received.
+     * After exiting the loop, the current task list is saved to storage.
+     */
     public void run() {
         ui.showWelcome();
 

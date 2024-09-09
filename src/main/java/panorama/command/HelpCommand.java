@@ -2,6 +2,9 @@ package panorama.command;
 
 import panorama.Message;
 
+/**
+ * Represents a command to display help information, including available commands and their formats.
+ */
 public class HelpCommand implements Command {
     public static final String COMMAND_WORD = "help";
 
