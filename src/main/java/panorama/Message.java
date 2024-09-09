@@ -25,6 +25,7 @@ public class Message {
         public static final String FIND = "find (description)";
 
         public static final String BYE = "bye";
+        public static final String HELP = "help";
 
         // task creation
         public static final String TODO = "todo (description)";
