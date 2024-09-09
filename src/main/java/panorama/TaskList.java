@@ -95,4 +95,14 @@ public class TaskList {
 
         return new TaskList(result);
     }
+
+    /**
+     * Retrieves a task at the specified index.
+     *
+     * @param index The index of the task to be retrieved.
+     * @return The task at the specified index.
+     */
+    public Task get(int index) {
+        return tasks.get(index);
+    }
 }
