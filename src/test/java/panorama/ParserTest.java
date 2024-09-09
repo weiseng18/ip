@@ -2,8 +2,11 @@ package panorama; // same package as the class being tested
 
 import panorama.command.Command;
 import panorama.command.DeadlineCommand;
+import panorama.command.DeleteCommand;
 import panorama.command.EventCommand;
+import panorama.command.MarkCommand;
 import panorama.command.TodoCommand;
+import panorama.command.UnmarkCommand;
 import panorama.exception.EmptyDescriptionException;
 import panorama.task.Todo;
 
@@ -69,4 +72,32 @@ public class ParserTest {
         String command = "event ";
         assertThrows(EmptyDescriptionException.class, () -> parser.parseCommand(command));
     }
+
+    @Test
+    public void parseMarkCommand_success() {
+        String command = "mark 1";
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(MarkCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseUnmarkCommand_success() {
+        String command = "unmark 1";
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(UnmarkCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseDeleteCommand_success() {
+        String command = "delete 1";
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(DeleteCommand.class, c.getClass());
+        });
+    }
+
 }
