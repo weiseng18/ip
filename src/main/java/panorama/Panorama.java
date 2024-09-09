@@ -1,8 +1,5 @@
 package panorama;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import panorama.command.Command;
 import panorama.exception.EmptyDescriptionException;
 import panorama.exception.UnknownCommandException;
