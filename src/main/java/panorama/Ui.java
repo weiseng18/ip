@@ -12,10 +12,6 @@ public class Ui {
         System.out.println("Hello! I'm Panorama\nWhat can I do for you?");
     }
 
-    public void showExit() {
-        System.out.println("Bye. Hope to see you again soon!");
-    }
-
     public void showError(String errMessage) {
         System.out.println("Error: " + errMessage);
     }
