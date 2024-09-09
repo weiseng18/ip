@@ -1,7 +1,6 @@
 package panorama.command;
 
 import panorama.TaskList;
-import panorama.task.Task;
 
 public class FindCommand implements Command {
     private TaskList taskList;
