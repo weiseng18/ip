@@ -64,7 +64,7 @@ public class Parser {
             }
             String[] contentTokens = rest.split(" /from ", 2);
             String name = contentTokens[0];
-            String[] dateRangeTokens = rest.split(" /to ", 2);
+            String[] dateRangeTokens = contentTokens[1].split(" /to ", 2);
             LocalDate from = DateParser.parse(dateRangeTokens[0]);
             LocalDate to = DateParser.parse(dateRangeTokens[1]);
             return new EventCommand(taskList, name, from, to);
