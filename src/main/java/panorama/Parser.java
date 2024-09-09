@@ -2,6 +2,7 @@ package panorama;
 
 import java.time.LocalDate;
 
+import panorama.command.ByeCommand;
 import panorama.command.Command;
 import panorama.command.DeadlineCommand;
 import panorama.command.DeleteCommand;
@@ -85,6 +86,10 @@ public class Parser {
 
         case ListCommand.COMMAND_WORD: {
             return new ListCommand(taskList);
+        }
+
+        case ByeCommand.COMMAND_WORD: {
+            return new ByeCommand();
         }
 
         default:
