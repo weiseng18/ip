@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,16 +23,16 @@ public class Storage {
 
     /**
      * Loads the task list from the file specified by {@code SAVE_FILE_NAME}.
-     * If the file does not exist, it returns an empty {@code TaskList}.
+     * If the file does not exist, it returns an empty {@code List<Task>}.
      *
-     * @return A {@code TaskList} object containing tasks loaded from the file.
+     * @return A {@code List<Task>} object containing tasks loaded from the file.
      * @throws FileNotFoundException If the file is not found.
      */
-    TaskList loadTaskList() throws FileNotFoundException {
+    List<Task> loadTasks() throws FileNotFoundException {
         File file = new File(SAVE_FILE_NAME);
         Scanner scanner = new Scanner(file);
 
-        TaskList taskList = new TaskList();
+        List<Task> tasks = new ArrayList<>();
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
@@ -39,37 +40,34 @@ public class Storage {
             String[] tokens = line.split("\\|");
 
             if (tokens[0].equals("T")) {
-                taskList.add(new Todo(tokens[2]));
+                tasks.add(new Todo(tokens[2]));
             } else if (tokens[0].equals("D")) {
                 LocalDate date = DateParser.parse(tokens[3]);
-                taskList.add(new Deadline(tokens[2], date));
+                tasks.add(new Deadline(tokens[2], date));
             } else {
                 LocalDate from = DateParser.parse(tokens[3]);
                 LocalDate to = DateParser.parse(tokens[4]);
-                taskList.add(new Event(tokens[2], from, to));
+                tasks.add(new Event(tokens[2], from, to));
             }
 
             // Set marked/unmarked correctly
             // Default is unmarked
-            if (tokens[1].equals("1")) {
-                taskList.mark(taskList.numTasks() - 1);
-            }
+            boolean isDone = tokens[1].equals("1");
+            tasks.get(tasks.size() - 1).setDone(isDone);
         }
 
         scanner.close();
 
-        return taskList;
+        return tasks;
     }
 
     /**
      * Saves the current list of tasks to the file specified by {@code SAVE_FILE_NAME}.
      *
-     * @param taskList The {@code TaskList} to be saved.
+     * @param tasks The {@code List<Task>} to be saved.
      * @throws IOException If an I/O error occurs while writing to the file.
      */
-    void saveTaskList(TaskList taskList) throws IOException {
-        List<Task> tasks = taskList.getTasks();
-
+    void saveTasks(List<Task> tasks) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(SAVE_FILE_NAME));
         for (int i = 0; i < tasks.size(); i++) {
             writer.write(tasks.get(i).toFileString() + "\n");
