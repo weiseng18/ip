@@ -105,4 +105,13 @@ public class TaskList {
     public Task get(int index) {
         return tasks.get(index);
     }
+
+    /**
+     * Returns the number of tasks in the list.
+     *
+     * @return The number of tasks in the list.
+     */
+    public int numTasks() {
+        return tasks.size();
+    }
 }
