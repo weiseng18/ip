@@ -64,13 +64,15 @@ public class Storage {
     /**
      * Saves the current list of tasks to the file specified by {@code SAVE_FILE_NAME}.
      *
-     * @param memory The list of {@code Task} objects to be saved.
+     * @param taskList The {@code TaskList} to be saved.
      * @throws IOException If an I/O error occurs while writing to the file.
      */
-    void saveTaskList(List<Task> memory) throws IOException {
+    void saveTaskList(TaskList taskList) throws IOException {
+        List<Task> tasks = taskList.getTasks();
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(SAVE_FILE_NAME));
-        for (int i = 0; i < memory.size(); i++) {
-            writer.write(memory.get(i).toFileString() + "\n");
+        for (int i = 0; i < tasks.size(); i++) {
+            writer.write(tasks.get(i).toFileString() + "\n");
         }
         writer.close();
     }

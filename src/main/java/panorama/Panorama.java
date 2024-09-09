@@ -1,6 +1,7 @@
 package panorama;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import panorama.command.Command;
 import panorama.exception.EmptyDescriptionException;
@@ -45,6 +46,12 @@ public class Panorama {
             } finally {
                 ui.showLine();
             }
+        }
+
+        try {
+            storage.saveTaskList(taskList);
+        } catch (IOException e) {
+            ui.showError(e.getMessage());
         }
     }
 
