@@ -8,6 +8,8 @@ public class DeleteCommand implements Command {
 
     private int id;
 
+    public static final String COMMAND_WORD = "delete";
+
     public DeleteCommand(TaskList taskList, int id) {
         this.taskList = taskList;
         this.id = id;

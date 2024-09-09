@@ -8,6 +8,8 @@ public class UnmarkCommand implements Command {
 
     private int id;
 
+    public static final String COMMAND_WORD = "unmark";
+
     public UnmarkCommand(TaskList taskList, int id) {
         this.taskList = taskList;
         this.id = id;

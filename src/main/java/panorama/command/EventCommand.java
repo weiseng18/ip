@@ -12,6 +12,8 @@ public class EventCommand implements Command {
     private LocalDate from;
     private LocalDate to;
 
+    public static final String COMMAND_WORD = "event";
+
     public EventCommand(TaskList taskList, String name, LocalDate from, LocalDate to) {
         this.taskList = taskList;
         this.name = name;

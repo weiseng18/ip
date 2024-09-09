@@ -11,6 +11,8 @@ public class DeadlineCommand implements Command {
     private String name;
     private LocalDate date;
 
+    public static final String COMMAND_WORD = "deadline";
+
     public DeadlineCommand(TaskList taskList, String name, LocalDate date) {
         this.taskList = taskList;
         this.name = name;

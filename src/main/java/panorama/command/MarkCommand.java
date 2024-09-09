@@ -8,6 +8,8 @@ public class MarkCommand implements Command {
 
     private int id;
 
+    public static final String COMMAND_WORD = "mark";
+
     public MarkCommand(TaskList taskList, int id) {
         this.taskList = taskList;
         this.id = id;

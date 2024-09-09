@@ -8,6 +8,8 @@ public class TodoCommand implements Command {
 
     private String name;
 
+    public static final String COMMAND_WORD = "todo";
+
     public TodoCommand(TaskList taskList, String name) {
         this.taskList = taskList;
         this.name = name;
