@@ -114,4 +114,17 @@ public class TaskList {
     public int numTasks() {
         return tasks.size();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tasks.size(); i++) {
+            int num = i + 1;
+            sb.append(num);
+            sb.append(". ");
+            sb.append(tasks.get(i).toString());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

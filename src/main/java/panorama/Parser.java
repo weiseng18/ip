@@ -6,6 +6,7 @@ import panorama.command.Command;
 import panorama.command.DeadlineCommand;
 import panorama.command.DeleteCommand;
 import panorama.command.EventCommand;
+import panorama.command.ListCommand;
 import panorama.command.MarkCommand;
 import panorama.command.TodoCommand;
 import panorama.command.UnmarkCommand;
@@ -80,6 +81,10 @@ public class Parser {
         case DeleteCommand.COMMAND_WORD: {
             int id = Integer.parseInt(rest) - 1;
             return new DeleteCommand(taskList, id);
+        }
+
+        case ListCommand.COMMAND_WORD: {
+            return new ListCommand(taskList);
         }
 
         default:
