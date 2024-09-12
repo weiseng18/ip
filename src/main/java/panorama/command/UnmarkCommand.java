@@ -8,6 +8,7 @@ import panorama.task.Task;
  */
 public class UnmarkCommand implements Command {
     public static final String COMMAND_WORD = "unmark";
+    public static final String COMMAND_SHORTHAND = "u";
 
     private TaskList taskList;
 

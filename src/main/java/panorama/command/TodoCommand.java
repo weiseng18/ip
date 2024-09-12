@@ -8,6 +8,7 @@ import panorama.task.Todo;
  */
 public class TodoCommand implements Command {
     public static final String COMMAND_WORD = "todo";
+    public static final String COMMAND_SHORTHAND = "t";
 
     private TaskList taskList;
 

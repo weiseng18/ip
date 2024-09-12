@@ -7,6 +7,7 @@ import panorama.Message;
  */
 public class HelpCommand implements Command {
     public static final String COMMAND_WORD = "help";
+    public static final String COMMAND_SHORTHAND = "h";
 
     @Override
     public boolean isBye() {

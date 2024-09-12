@@ -10,6 +10,7 @@ import panorama.task.Deadline;
  */
 public class DeadlineCommand implements Command {
     public static final String COMMAND_WORD = "deadline";
+    public static final String COMMAND_SHORTHAND = "d";
 
     private TaskList taskList;
 
