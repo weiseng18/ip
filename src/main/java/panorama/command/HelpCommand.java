@@ -18,6 +18,11 @@ public class HelpCommand implements Command {
     public String execute() {
         StringBuilder sb = new StringBuilder();
 
+        sb.append("The following commands are available.\n\n");
+
+        sb.append("Note that the part in [] indicates a shorthand. For example, ");
+        sb.append(Message.CommandFormat.LIST + " means that both list and l are valid ways to use the command.\n\n");
+
         sb.append(Message.CommandFormat.LIST + "\n");
         sb.append(Message.CommandFormat.FIND + "\n");
 
