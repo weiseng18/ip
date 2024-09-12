@@ -18,8 +18,8 @@ import panorama.exception.EmptyDescriptionException;
 import panorama.task.Todo;
 
 public class ParserTest {
-    TaskList taskList;
-    Parser parser;
+    private TaskList taskList;
+    private Parser parser;
 
     @BeforeEach
     public void setup() {
