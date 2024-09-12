@@ -26,6 +26,7 @@ public class ListCommand implements Command {
 
     @Override
     public String execute() {
+        assert taskList != null;
         return taskList.toString();
     }
 }

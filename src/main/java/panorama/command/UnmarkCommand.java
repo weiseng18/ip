@@ -31,6 +31,7 @@ public class UnmarkCommand implements Command {
 
     @Override
     public String execute() {
+        assert taskList != null;
         taskList.unmark(id);
         Task task = taskList.get(id);
         return "OK, I've marked this task as not done yet:\n" + task.toString();

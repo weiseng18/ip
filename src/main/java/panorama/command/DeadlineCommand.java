@@ -36,6 +36,7 @@ public class DeadlineCommand implements Command {
 
     @Override
     public String execute() {
+        assert taskList != null;
         Deadline deadline = new Deadline(name, date);
         taskList.add(deadline);
         return "Added task:\n" + deadline.toString();

@@ -31,6 +31,7 @@ public class MarkCommand implements Command {
 
     @Override
     public String execute() {
+        assert taskList != null;
         taskList.mark(id);
         Task task = taskList.get(id);
         return "Nice! I've marked this task as done:\n" + task.toString();
