@@ -1,5 +1,12 @@
 package panorama; // same package as the class being tested
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import panorama.command.Command;
 import panorama.command.DeadlineCommand;
 import panorama.command.DeleteCommand;
@@ -9,12 +16,6 @@ import panorama.command.TodoCommand;
 import panorama.command.UnmarkCommand;
 import panorama.exception.EmptyDescriptionException;
 import panorama.task.Todo;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ParserTest {
     TaskList taskList;
