@@ -10,6 +10,7 @@ import panorama.task.Event;
  */
 public class EventCommand implements Command {
     public static final String COMMAND_WORD = "event";
+    public static final String COMMAND_SHORTHAND = "e";
 
     private TaskList taskList;
 

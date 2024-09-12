@@ -21,20 +21,20 @@ public class Message {
      */
     public class CommandFormat {
         // task listing
-        public static final String LIST = "list";
-        public static final String FIND = "find (description)";
+        public static final String LIST = "[l]ist";
+        public static final String FIND = "[f]ind (description)";
 
-        public static final String BYE = "bye";
-        public static final String HELP = "help";
+        public static final String BYE = "[b]ye";
+        public static final String HELP = "[h]elp";
 
         // task creation
-        public static final String TODO = "todo (description)";
-        public static final String DEADLINE = "deadline (description) /by (date_string)";
-        public static final String EVENT = "event (description) /from (date_string) /to (date_string)";
+        public static final String TODO = "[t]odo (description)";
+        public static final String DEADLINE = "[d]eadline (description) /by (date_string)";
+        public static final String EVENT = "[e]vent (description) /from (date_string) /to (date_string)";
 
         // task amendment
-        public static final String MARK = "mark (task_id)";
-        public static final String UNMARK = "unmark (task_id)";
-        public static final String DELETE = "delete (task_id)";
+        public static final String MARK = "[m]ark (task_id)";
+        public static final String UNMARK = "[u]nmark (task_id)";
+        public static final String DELETE = "[del]ete (task_id)";
     }
 }

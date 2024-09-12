@@ -7,6 +7,7 @@ import panorama.TaskList;
  */
 public class FindCommand implements Command {
     public static final String COMMAND_WORD = "find";
+    public static final String COMMAND_SHORTHAND = "f";
 
     private TaskList taskList;
 

@@ -5,6 +5,7 @@ package panorama.command;
  */
 public class ByeCommand implements Command {
     public static final String COMMAND_WORD = "bye";
+    public static final String COMMAND_SHORTHAND = "b";
 
     @Override
     public boolean isBye() {

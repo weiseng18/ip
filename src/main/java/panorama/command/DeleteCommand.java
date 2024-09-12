@@ -8,6 +8,7 @@ import panorama.task.Task;
  */
 public class DeleteCommand implements Command {
     public static final String COMMAND_WORD = "delete";
+    public static final String COMMAND_SHORTHAND = "del";
 
     private TaskList taskList;
 

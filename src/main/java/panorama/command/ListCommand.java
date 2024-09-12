@@ -7,6 +7,7 @@ import panorama.TaskList;
  */
 public class ListCommand implements Command {
     public static final String COMMAND_WORD = "list";
+    public static final String COMMAND_SHORTHAND = "l";
 
     private TaskList taskList;
 

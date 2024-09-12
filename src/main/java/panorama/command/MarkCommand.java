@@ -8,6 +8,7 @@ import panorama.task.Task;
  */
 public class MarkCommand implements Command {
     public static final String COMMAND_WORD = "mark";
+    public static final String COMMAND_SHORTHAND = "m";
 
     private TaskList taskList;
 
