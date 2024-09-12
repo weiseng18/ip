@@ -42,6 +42,7 @@ public class Parser {
 
         switch (command) {
 
+        case TodoCommand.COMMAND_SHORTHAND:
         case TodoCommand.COMMAND_WORD: {
             if (rest.equals("")) {
                 throw new EmptyDescriptionException();
@@ -49,6 +50,7 @@ public class Parser {
             return new TodoCommand(taskList, rest);
         }
 
+        case DeadlineCommand.COMMAND_SHORTHAND:
         case DeadlineCommand.COMMAND_WORD: {
             if (rest.equals("")) {
                 throw new EmptyDescriptionException();
@@ -59,6 +61,7 @@ public class Parser {
             return new DeadlineCommand(taskList, name, date);
         }
 
+        case EventCommand.COMMAND_SHORTHAND:
         case EventCommand.COMMAND_WORD: {
             if (rest.equals("")) {
                 throw new EmptyDescriptionException();
@@ -71,33 +74,40 @@ public class Parser {
             return new EventCommand(taskList, name, from, to);
         }
 
+        case MarkCommand.COMMAND_SHORTHAND:
         case MarkCommand.COMMAND_WORD: {
             int id = Integer.parseInt(rest) - 1;
             return new MarkCommand(taskList, id);
         }
 
+        case UnmarkCommand.COMMAND_SHORTHAND:
         case UnmarkCommand.COMMAND_WORD: {
             int id = Integer.parseInt(rest) - 1;
             return new UnmarkCommand(taskList, id);
         }
 
+        case DeleteCommand.COMMAND_SHORTHAND:
         case DeleteCommand.COMMAND_WORD: {
             int id = Integer.parseInt(rest) - 1;
             return new DeleteCommand(taskList, id);
         }
 
+        case ListCommand.COMMAND_SHORTHAND:
         case ListCommand.COMMAND_WORD: {
             return new ListCommand(taskList);
         }
 
+        case FindCommand.COMMAND_SHORTHAND:
         case FindCommand.COMMAND_WORD: {
             return new FindCommand(taskList, rest);
         }
 
+        case ByeCommand.COMMAND_SHORTHAND:
         case ByeCommand.COMMAND_WORD: {
             return new ByeCommand();
         }
 
+        case HelpCommand.COMMAND_SHORTHAND:
         case HelpCommand.COMMAND_WORD: {
             return new HelpCommand();
         }
