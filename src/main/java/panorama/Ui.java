@@ -23,8 +23,4 @@ public class Ui {
     public void showError(String errMessage) {
         System.out.println("Error: " + errMessage);
     }
-
-    public String readCommand() {
-        return scanner.nextLine();
-    }
 }
