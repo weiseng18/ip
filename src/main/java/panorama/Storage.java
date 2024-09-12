@@ -44,10 +44,13 @@ public class Storage {
             } else if (tokens[0].equals("D")) {
                 LocalDate date = DateParser.parse(tokens[3]);
                 tasks.add(new Deadline(tokens[2], date));
-            } else {
+            } else if (tokens[0].equals("E")) {
                 LocalDate from = DateParser.parse(tokens[3]);
                 LocalDate to = DateParser.parse(tokens[4]);
                 tasks.add(new Event(tokens[2], from, to));
+            } else {
+                // Incorrect input, skip
+                continue;
             }
 
             // Set marked/unmarked correctly
