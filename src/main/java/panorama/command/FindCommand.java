@@ -30,6 +30,7 @@ public class FindCommand implements Command {
 
     @Override
     public String execute() {
+        assert taskList != null;
         TaskList filteredList = taskList.find(keyword);
         return filteredList.toString();
     }

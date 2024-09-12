@@ -31,6 +31,7 @@ public class DeleteCommand implements Command {
 
     @Override
     public String execute() {
+        assert taskList != null;
         Task deletedTask = taskList.delete(id);
         return "Noted. I've removed this task:\n" + deletedTask.toString();
     }

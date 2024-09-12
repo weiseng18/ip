@@ -31,6 +31,7 @@ public class TodoCommand implements Command {
 
     @Override
     public String execute() {
+        assert taskList != null;
         Todo todo = new Todo(name);
         taskList.add(todo);
         return "Added task:\n" + todo.toString();

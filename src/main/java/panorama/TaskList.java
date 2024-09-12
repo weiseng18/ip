@@ -36,6 +36,7 @@ public class TaskList {
      * Saves the list of tasks to the data file.
      */
     private void save() {
+        assert storage != null;
         try {
             storage.saveTasks(tasks);
         } catch (IOException e) {
@@ -47,6 +48,7 @@ public class TaskList {
      * Loads the list of tasks from the data file.
      */
     private void load() {
+        assert storage != null;
         try {
             tasks = storage.loadTasks();
         } catch (IOException e) {

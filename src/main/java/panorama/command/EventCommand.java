@@ -39,6 +39,7 @@ public class EventCommand implements Command {
 
     @Override
     public String execute() {
+        assert taskList != null;
         Event event = new Event(name, from, to);
         taskList.add(event);
         return "Added task:\n" + event.toString();
