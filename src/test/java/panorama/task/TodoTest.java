@@ -1,11 +1,12 @@
 package panorama.task; // same package as the class being tested
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+
 public class TodoTest {
-    String name = "Todo Task";
-    Todo t = new Todo(name);
+    private String name = "Todo Task";
+    private Todo t = new Todo(name);
 
     @Test
     public void toString_success() {

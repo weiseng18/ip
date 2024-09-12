@@ -1,17 +1,18 @@
 package panorama.task; // same package as the class being tested
 
-import panorama.DateParser;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import panorama.DateParser;
 
 public class EventTest {
-    String name = "Event Task";
-    LocalDate from = LocalDate.now();
-    LocalDate to = from.plusYears(1);
-    Event e = new Event(name, from, to);
+    private String name = "Event Task";
+    private LocalDate from = LocalDate.now();
+    private LocalDate to = from.plusYears(1);
+    private Event e = new Event(name, from, to);
 
     @Test
     public void toString_success() {
