@@ -47,4 +47,44 @@ public class TaskListTest {
         Task task = taskList.get(0);
         assertEquals(t, task);
     }
+
+    @Test
+    public void mark_success() {
+        Todo t = new Todo("task 1");
+        taskList.add(t);
+
+        assertEquals(false, taskList.get(0).getIsDone());
+
+        // Mark the 1st item
+        taskList.mark(0);
+
+        assertEquals(true, taskList.get(0).getIsDone());
+    }
+
+    @Test
+    public void unmark_success() {
+        Todo t = new Todo("task 1");
+        t.setDone(true);
+
+        taskList.add(t);
+
+        assertEquals(true, taskList.get(0).getIsDone());
+
+        // Unmark the 1st item
+        taskList.unmark(0);
+
+        assertEquals(false, taskList.get(0).getIsDone());
+    }
+
+    @Test
+    public void delete_success() {
+        Todo t = new Todo("task 1");
+        taskList.add(t);
+
+        assertEquals(1, taskList.getTasks().size());
+
+        taskList.delete(0);
+
+        assertEquals(0, taskList.getTasks().size());
+    }
 }
