@@ -14,12 +14,18 @@ public class TaskList {
     private List<Task> tasks;
     private Storage storage;
 
+    private boolean isTestEnv;
+
     /**
      * Initializes an empty task list.
+     *
+     * @param isTestEnv true if in test env
      */
-    public TaskList() {
+    public TaskList(boolean isTestEnv) {
         tasks = new ArrayList<>();
         storage = new Storage();
+        this.isTestEnv = isTestEnv;
+
         load();
     }
 
@@ -27,15 +33,22 @@ public class TaskList {
      * Initializes the task list with a pre-existing list of tasks.
      *
      * @param list The initial list of {@code Task} objects.
+     * @param isTestEnv true if in test env
      */
-    public TaskList(List<Task> list) {
+    public TaskList(List<Task> list, boolean isTestEnv) {
         tasks = list;
+        storage = new Storage();
+        this.isTestEnv = isTestEnv;
     }
 
     /**
      * Saves the list of tasks to the data file.
      */
     private void save() {
+        if (this.isTestEnv) {
+            return;
+        }
+
         assert storage != null;
         try {
             storage.saveTasks(tasks);
@@ -48,6 +61,10 @@ public class TaskList {
      * Loads the list of tasks from the data file.
      */
     private void load() {
+        if (this.isTestEnv) {
+            return;
+        }
+
         assert storage != null;
         try {
             tasks = storage.loadTasks();
@@ -126,7 +143,7 @@ public class TaskList {
         }
 
 
-        return new TaskList(result);
+        return new TaskList(result, this.isTestEnv);
     }
 
     /**

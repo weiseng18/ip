@@ -19,7 +19,7 @@ public class Panorama {
      */
     public Panorama() {
         ui = new Ui();
-        taskList = new TaskList();
+        taskList = new TaskList(false);
         parser = new Parser(taskList);
     }
 
