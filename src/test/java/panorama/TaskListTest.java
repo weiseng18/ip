@@ -83,8 +83,9 @@ public class TaskListTest {
 
         assertEquals(1, taskList.getTasks().size());
 
-        taskList.delete(0);
+        Task deletedTask = taskList.delete(0);
 
         assertEquals(0, taskList.getTasks().size());
+        assertEquals(t, deletedTask);
     }
 }
