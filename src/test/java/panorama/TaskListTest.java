@@ -88,4 +88,32 @@ public class TaskListTest {
         assertEquals(0, taskList.getTasks().size());
         assertEquals(t, deletedTask);
     }
+
+    @Test
+    public void find_allMatch_success() {
+        taskList.add(new Todo("task 1"));
+
+        TaskList result = taskList.find("task");
+
+        assertEquals(taskList.getTasks(), result.getTasks());
+    }
+
+    @Test
+    public void find_noneMatch_success() {
+        taskList.add(new Todo("task 1"));
+
+        TaskList result = taskList.find("event");
+
+        assertEquals(0, result.getTasks().size());
+    }
+
+    @Test
+    public void find_someMatch_success() {
+        taskList.add(new Todo("task 1"));
+        taskList.add(new Todo("another name"));
+
+        TaskList result = taskList.find("task");
+
+        assertEquals(1, result.getTasks().size());
+    }
 }
