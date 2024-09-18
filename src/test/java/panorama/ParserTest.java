@@ -7,10 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import panorama.command.ByeCommand;
 import panorama.command.Command;
 import panorama.command.DeadlineCommand;
 import panorama.command.DeleteCommand;
 import panorama.command.EventCommand;
+import panorama.command.FindCommand;
+import panorama.command.HelpCommand;
+import panorama.command.ListCommand;
 import panorama.command.MarkCommand;
 import panorama.command.TodoCommand;
 import panorama.command.UnmarkCommand;
@@ -155,4 +159,75 @@ public class ParserTest {
         });
     }
 
+    @Test
+    public void parseHelpCommand_shorthand_success() {
+        String command = HelpCommand.COMMAND_SHORTHAND;
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(HelpCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseHelpCommand_success() {
+        String command = HelpCommand.COMMAND_WORD;
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(HelpCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseByeCommand_shorthand_success() {
+        String command = ByeCommand.COMMAND_SHORTHAND;
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(ByeCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseByeCommand_success() {
+        String command = ByeCommand.COMMAND_WORD;
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(ByeCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseListCommand_shorthand_success() {
+        String command = ListCommand.COMMAND_SHORTHAND;
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(ListCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseListCommand_success() {
+        String command = ListCommand.COMMAND_WORD;
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(ListCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseFindCommand_shorthand_success() {
+        String command = FindCommand.COMMAND_SHORTHAND + " 1";
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(FindCommand.class, c.getClass());
+        });
+    }
+
+    @Test
+    public void parseFindCommand_success() {
+        String command = FindCommand.COMMAND_WORD + " 1";
+        assertDoesNotThrow(() -> {
+            Command c = parser.parseCommand(command);
+            assertEquals(FindCommand.class, c.getClass());
+        });
+    }
 }
