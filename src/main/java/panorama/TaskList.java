@@ -47,6 +47,7 @@ public class TaskList {
      */
     public TaskList(List<Task> list) {
         tasks = list;
+        storage = new Storage();
     }
 
     /**
@@ -57,6 +58,7 @@ public class TaskList {
      */
     public TaskList(List<Task> list, boolean isTestEnv) {
         tasks = list;
+        storage = new Storage();
         this.isTestEnv = isTestEnv;
     }
 
