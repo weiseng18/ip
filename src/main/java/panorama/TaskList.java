@@ -18,17 +18,6 @@ public class TaskList {
 
     /**
      * Initializes an empty task list.
-     */
-    public TaskList() {
-        tasks = new ArrayList<>();
-        storage = new Storage();
-        isTestEnv = false;
-
-        load();
-    }
-
-    /**
-     * Initializes an empty task list in a test env.
      *
      * @param isTestEnv true if in test env
      */
@@ -42,16 +31,6 @@ public class TaskList {
 
     /**
      * Initializes the task list with a pre-existing list of tasks.
-     *
-     * @param list The initial list of {@code Task} objects.
-     */
-    public TaskList(List<Task> list) {
-        tasks = list;
-        storage = new Storage();
-    }
-
-    /**
-     * Initializes the task list with a pre-existing list of tasks, in a test env.
      *
      * @param list The initial list of {@code Task} objects.
      * @param isTestEnv true if in test env
@@ -164,7 +143,7 @@ public class TaskList {
         }
 
 
-        return new TaskList(result);
+        return new TaskList(result, false);
     }
 
     /**
