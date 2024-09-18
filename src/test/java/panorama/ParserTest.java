@@ -31,7 +31,7 @@ public class ParserTest {
 
     @Test
     public void parseTodoCommand_success() {
-        String command = "todo new_task";
+        String command = TodoCommand.COMMAND_WORD + " new_task";
         assertDoesNotThrow(() -> {
             Command c = parser.parseCommand(command);
             assertEquals(TodoCommand.class, c.getClass());
@@ -40,13 +40,13 @@ public class ParserTest {
 
     @Test
     public void parseTodoCommand_emptyDescription_exceptionThrown() {
-        String command = "todo ";
+        String command = TodoCommand.COMMAND_WORD + " ";
         assertThrows(EmptyDescriptionException.class, () -> parser.parseCommand(command));
     }
 
     @Test
     public void parseDeadlineCommand_success() {
-        String command = "deadline new_task /by 2024-09-01";
+        String command = DeadlineCommand.COMMAND_WORD + " new_task /by 2024-09-01";
         assertDoesNotThrow(() -> {
             Command c = parser.parseCommand(command);
             assertEquals(DeadlineCommand.class, c.getClass());
@@ -55,13 +55,13 @@ public class ParserTest {
 
     @Test
     public void parseDeadlineCommand_emptyDescription_exceptionThrown() {
-        String command = "deadline ";
+        String command = DeadlineCommand.COMMAND_WORD + " ";
         assertThrows(EmptyDescriptionException.class, () -> parser.parseCommand(command));
     }
 
     @Test
     public void parseEventCommand_success() {
-        String command = "event new_task /from 2024-09-01 /to 2024-09-03";
+        String command = EventCommand.COMMAND_WORD + " new_task /from 2024-09-01 /to 2024-09-03";
         assertDoesNotThrow(() -> {
             Command c = parser.parseCommand(command);
             assertEquals(EventCommand.class, c.getClass());
@@ -70,13 +70,13 @@ public class ParserTest {
 
     @Test
     public void parseEventCommand_emptyDescription_exceptionThrown() {
-        String command = "event ";
+        String command = EventCommand.COMMAND_WORD + " ";
         assertThrows(EmptyDescriptionException.class, () -> parser.parseCommand(command));
     }
 
     @Test
     public void parseMarkCommand_success() {
-        String command = "mark 1";
+        String command = MarkCommand.COMMAND_WORD + " 1";
         assertDoesNotThrow(() -> {
             Command c = parser.parseCommand(command);
             assertEquals(MarkCommand.class, c.getClass());
@@ -85,7 +85,7 @@ public class ParserTest {
 
     @Test
     public void parseUnmarkCommand_success() {
-        String command = "unmark 1";
+        String command = UnmarkCommand.COMMAND_WORD + " 1";
         assertDoesNotThrow(() -> {
             Command c = parser.parseCommand(command);
             assertEquals(UnmarkCommand.class, c.getClass());
@@ -94,7 +94,7 @@ public class ParserTest {
 
     @Test
     public void parseDeleteCommand_success() {
-        String command = "delete 1";
+        String command = DeleteCommand.COMMAND_WORD + " 1";
         assertDoesNotThrow(() -> {
             Command c = parser.parseCommand(command);
             assertEquals(DeleteCommand.class, c.getClass());
