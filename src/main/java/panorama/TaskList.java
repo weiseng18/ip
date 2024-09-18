@@ -143,7 +143,7 @@ public class TaskList {
         }
 
 
-        return new TaskList(result, false);
+        return new TaskList(result, this.isTestEnv);
     }
 
     /**
