@@ -112,15 +112,15 @@ public class TaskList {
             String name = t.getName();
             String[] words = name.split(" ");
 
-            boolean found = false;
+            boolean isFound = false;
             for (String word: words) {
                 if (word.equals(keyword)) {
-                    found = true;
+                    isFound = true;
                     break;
                 }
             }
 
-            if (found) {
+            if (isFound) {
                 result.add(t);
             }
         }
