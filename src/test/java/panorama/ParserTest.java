@@ -23,7 +23,7 @@ public class ParserTest {
 
     @BeforeEach
     public void setup() {
-        taskList = new TaskList();
+        taskList = new TaskList(true);
         // For mark, unmark, delete, find, list
         taskList.add(new Todo("todo task"));
         parser = new Parser(taskList);
