@@ -177,6 +177,12 @@ public class TaskList {
 
     @Override
     public String toString() {
+        if (tasks.size() == 0) {
+            // This could either be the result of a `list` command, or
+            // a `find x` command where x has no search results.
+            return "No tasks found.";
+        }
+
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
             if (i > 0) {
