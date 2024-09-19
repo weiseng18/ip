@@ -14,6 +14,7 @@ import panorama.command.MarkCommand;
 import panorama.command.TodoCommand;
 import panorama.command.UnmarkCommand;
 import panorama.exception.EmptyDescriptionException;
+import panorama.exception.EmptyKeywordException;
 import panorama.exception.IdOutOfBoundsException;
 import panorama.exception.NonIntegerIdException;
 import panorama.exception.UnknownCommandException;
@@ -59,7 +60,8 @@ public class Parser {
      */
     public Command parseCommand(String input)
             throws EmptyDescriptionException, UnknownCommandException,
-                              NonIntegerIdException, IdOutOfBoundsException {
+                              NonIntegerIdException, IdOutOfBoundsException,
+                              EmptyKeywordException {
         String stripped = input.strip();
         String[] tokens = stripped.split(" ", 2);
 
@@ -125,6 +127,9 @@ public class Parser {
 
         case FindCommand.COMMAND_SHORTHAND:
         case FindCommand.COMMAND_WORD: {
+            if (rest.equals("")) {
+                throw new EmptyKeywordException();
+            }
             return new FindCommand(taskList, rest);
         }
 
