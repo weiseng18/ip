@@ -14,6 +14,7 @@ import panorama.command.MarkCommand;
 import panorama.command.TodoCommand;
 import panorama.command.UnmarkCommand;
 import panorama.exception.EmptyDescriptionException;
+import panorama.exception.IdOutOfBoundsException;
 import panorama.exception.NonIntegerIdException;
 import panorama.exception.UnknownCommandException;
 
@@ -29,15 +30,21 @@ public class Parser {
 
     /**
      * Parses the user input. It expects a string containing a positive integer
-     * represnting a 1-indexed ID.
+     * represnting a 1-indexed ID. It also expects the parsed ID, id to be between
+     * 0 and taskList.size() - 1 inclusive.
      *
      * @param input The user's input string to be parsed.
      * @return An integer representing the parsed ID in 0-index.
      */
-    public int parseId(String input) throws NonIntegerIdException {
+    public int parseId(String input) throws NonIntegerIdException, IdOutOfBoundsException {
         int id;
         try {
             id = Integer.parseInt(input) - 1;
+
+            int curSize = this.taskList.numTasks();
+            if (id < 0 || id >= curSize) {
+                throw new IdOutOfBoundsException(curSize);
+            }
         } catch (NumberFormatException e) {
             throw new NonIntegerIdException();
         }
@@ -51,7 +58,8 @@ public class Parser {
      * @return A {@code Command} representing the parsed command.
      */
     public Command parseCommand(String input)
-            throws EmptyDescriptionException, UnknownCommandException, NonIntegerIdException {
+            throws EmptyDescriptionException, UnknownCommandException,
+                              NonIntegerIdException, IdOutOfBoundsException {
         String stripped = input.strip();
         String[] tokens = stripped.split(" ", 2);
 

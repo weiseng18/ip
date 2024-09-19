@@ -14,6 +14,7 @@ public class Message {
         public static final String INVALID_DATE = "Invalid date specified.";
         public static final String UNKNOWN_COMMAND = "Unknown command.";
         public static final String NON_INTEGER = "The ID you provided is not an integer, or it is empty.";
+        public static final String ID_OUT_OF_BOUNDS = "The ID you provided is does not belong to a task.";
     }
 
     /**
