@@ -17,6 +17,7 @@ import panorama.exception.EmptyDescriptionException;
 import panorama.exception.EmptyKeywordException;
 import panorama.exception.IdOutOfBoundsException;
 import panorama.exception.InvalidDateException;
+import panorama.exception.InvalidUsageException;
 import panorama.exception.NonIntegerIdException;
 import panorama.exception.UnknownCommandException;
 
@@ -62,7 +63,8 @@ public class Parser {
     public Command parseCommand(String input)
             throws EmptyDescriptionException, UnknownCommandException,
                               NonIntegerIdException, IdOutOfBoundsException,
-                              EmptyKeywordException, InvalidDateException {
+                              EmptyKeywordException, InvalidDateException,
+                              InvalidUsageException {
         String stripped = input.strip();
         String[] tokens = stripped.split(" ", 2);
 
@@ -84,7 +86,12 @@ public class Parser {
             if (rest.equals("")) {
                 throw new EmptyDescriptionException();
             }
+
             String[] contentTokens = rest.split(" /by ", 2);
+            if (contentTokens.length != 2) {
+                throw new InvalidUsageException(Message.CommandFormat.DEADLINE);
+            }
+
             String name = contentTokens[0];
             LocalDate date = DateParser.parse(contentTokens[1]);
             return new DeadlineCommand(taskList, name, date);
@@ -95,9 +102,19 @@ public class Parser {
             if (rest.equals("")) {
                 throw new EmptyDescriptionException();
             }
+
             String[] contentTokens = rest.split(" /from ", 2);
+            if (contentTokens.length != 2) {
+                throw new InvalidUsageException(Message.CommandFormat.EVENT);
+            }
+
             String name = contentTokens[0];
+
             String[] dateRangeTokens = contentTokens[1].split(" /to ", 2);
+            if (dateRangeTokens.length != 2) {
+                throw new InvalidUsageException(Message.CommandFormat.EVENT);
+            }
+
             LocalDate from = DateParser.parse(dateRangeTokens[0]);
             LocalDate to = DateParser.parse(dateRangeTokens[1]);
             return new EventCommand(taskList, name, from, to);

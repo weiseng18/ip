@@ -16,6 +16,7 @@ public class Message {
         public static final String NON_INTEGER = "The ID you provided is not an integer, or it is empty.";
         public static final String ID_OUT_OF_BOUNDS = "The ID you provided is does not belong to a task.";
         public static final String EMPTY_KEYWORD = "Search keyword cannot be empty.";
+        public static final String INVALID_USAGE = "Invalid command usage.";
     }
 
     /**
