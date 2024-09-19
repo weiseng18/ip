@@ -2,6 +2,7 @@ package panorama;
 
 import panorama.command.Command;
 import panorama.exception.EmptyDescriptionException;
+import panorama.exception.NonIntegerIdException;
 import panorama.exception.UnknownCommandException;
 
 /**
@@ -27,7 +28,7 @@ public class Panorama {
         try {
             Command c = parser.parseCommand(input);
             return c.execute();
-        } catch (UnknownCommandException | EmptyDescriptionException e) {
+        } catch (UnknownCommandException | EmptyDescriptionException | NonIntegerIdException e) {
             return e.getMessage();
         }
     }

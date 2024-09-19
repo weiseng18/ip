@@ -13,6 +13,7 @@ public class Message {
         public static final String EMPTY_DESCRIPTION = "Description cannot be empty.";
         public static final String INVALID_DATE = "Invalid date specified.";
         public static final String UNKNOWN_COMMAND = "Unknown command.";
+        public static final String NON_INTEGER = "The ID you provided is not an integer, or it is empty.";
     }
 
     /**

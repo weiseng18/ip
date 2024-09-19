@@ -14,6 +14,7 @@ import panorama.command.MarkCommand;
 import panorama.command.TodoCommand;
 import panorama.command.UnmarkCommand;
 import panorama.exception.EmptyDescriptionException;
+import panorama.exception.NonIntegerIdException;
 import panorama.exception.UnknownCommandException;
 
 /**
@@ -27,13 +28,30 @@ public class Parser {
     }
 
     /**
+     * Parses the user input. It expects a string containing a positive integer
+     * represnting a 1-indexed ID.
+     *
+     * @param input The user's input string to be parsed.
+     * @return An integer representing the parsed ID in 0-index.
+     */
+    public int parseId(String input) throws NonIntegerIdException {
+        int id;
+        try {
+            id = Integer.parseInt(input) - 1;
+        } catch (NumberFormatException e) {
+            throw new NonIntegerIdException();
+        }
+        return id;
+    }
+
+    /**
      * Parses the user input and returns an executable command based on the input.
      *
      * @param input The user's input string to be parsed.
      * @return A {@code Command} representing the parsed command.
      */
     public Command parseCommand(String input)
-            throws EmptyDescriptionException, UnknownCommandException {
+            throws EmptyDescriptionException, UnknownCommandException, NonIntegerIdException {
         String stripped = input.strip();
         String[] tokens = stripped.split(" ", 2);
 
@@ -76,19 +94,19 @@ public class Parser {
 
         case MarkCommand.COMMAND_SHORTHAND:
         case MarkCommand.COMMAND_WORD: {
-            int id = Integer.parseInt(rest) - 1;
+            int id = parseId(rest);
             return new MarkCommand(taskList, id);
         }
 
         case UnmarkCommand.COMMAND_SHORTHAND:
         case UnmarkCommand.COMMAND_WORD: {
-            int id = Integer.parseInt(rest) - 1;
+            int id = parseId(rest);
             return new UnmarkCommand(taskList, id);
         }
 
         case DeleteCommand.COMMAND_SHORTHAND:
         case DeleteCommand.COMMAND_WORD: {
-            int id = Integer.parseInt(rest) - 1;
+            int id = parseId(rest);
             return new DeleteCommand(taskList, id);
         }
 
