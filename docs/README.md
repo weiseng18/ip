@@ -130,7 +130,7 @@ Note that:
 
 Exit the application using:
 
-[b]ye
+`[b]ye`
 
 Note that Panorama has auto-save and auto-load, so you can safely run `bye` whenever you want to close the application.
 
