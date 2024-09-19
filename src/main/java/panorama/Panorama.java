@@ -2,12 +2,7 @@ package panorama;
 
 import panorama.command.Command;
 import panorama.command.Response;
-import panorama.exception.EmptyDescriptionException;
-import panorama.exception.EmptyKeywordException;
-import panorama.exception.IdOutOfBoundsException;
-import panorama.exception.InvalidDateException;
-import panorama.exception.NonIntegerIdException;
-import panorama.exception.UnknownCommandException;
+import panorama.exception.PanoramaException;
 
 /**
  * Represents the main class for managing the Panorama application.
@@ -32,9 +27,7 @@ public class Panorama {
         try {
             Command c = parser.parseCommand(input);
             return c.execute();
-        } catch (UnknownCommandException | EmptyDescriptionException
-                | NonIntegerIdException | IdOutOfBoundsException
-                | EmptyKeywordException | InvalidDateException e) {
+        } catch (PanoramaException e) {
             return new Response(e.getMessage(), false);
         }
     }

@@ -6,7 +6,7 @@ import panorama.Message;
  * This exception is used to signal that a user-provided input for
  * an ID is out of bounds of the current task list.
  */
-public class IdOutOfBoundsException extends Exception {
+public class IdOutOfBoundsException extends PanoramaException {
     /**
      * Constructs a new {@code IdOutOfBoundsException} with a default error message.
      *

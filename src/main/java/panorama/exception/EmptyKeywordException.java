@@ -5,7 +5,7 @@ import panorama.Message;
 /**
  * Thrown to indicate that the search keyword for find is empty.
  */
-public class EmptyKeywordException extends Exception {
+public class EmptyKeywordException extends PanoramaException {
     /**
      * Constructs a new {@code EmptyKeywordException} with a default error message.
      */
