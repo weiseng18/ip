@@ -24,8 +24,8 @@ public class IdOutOfBoundsException extends Exception {
      */
     private static String buildMessage(int taskListSize) {
         Integer largestValidId = taskListSize;
-        return Message.MyException.ID_OUT_OF_BOUNDS +
-            " Please input an ID between 1 and " + largestValidId.toString() + ".";
+        return Message.MyException.ID_OUT_OF_BOUNDS
+            + " Please input an ID between 1 and " + largestValidId.toString() + ".";
     }
 }
 

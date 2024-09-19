@@ -1,5 +1,8 @@
 package panorama.command;
 
+/**
+ * Represents the return result of an execute command of a {@code Command}.
+ */
 public class Response {
     private final String message;
     private final boolean isBye;

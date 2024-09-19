@@ -5,6 +5,7 @@ import panorama.command.Response;
 import panorama.exception.EmptyDescriptionException;
 import panorama.exception.EmptyKeywordException;
 import panorama.exception.IdOutOfBoundsException;
+import panorama.exception.InvalidDateException;
 import panorama.exception.NonIntegerIdException;
 import panorama.exception.UnknownCommandException;
 
@@ -33,7 +34,7 @@ public class Panorama {
             return c.execute();
         } catch (UnknownCommandException | EmptyDescriptionException
                 | NonIntegerIdException | IdOutOfBoundsException
-                | EmptyKeywordException e) {
+                | EmptyKeywordException | InvalidDateException e) {
             return new Response(e.getMessage(), false);
         }
     }

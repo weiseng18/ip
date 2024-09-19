@@ -16,6 +16,7 @@ import panorama.command.UnmarkCommand;
 import panorama.exception.EmptyDescriptionException;
 import panorama.exception.EmptyKeywordException;
 import panorama.exception.IdOutOfBoundsException;
+import panorama.exception.InvalidDateException;
 import panorama.exception.NonIntegerIdException;
 import panorama.exception.UnknownCommandException;
 
@@ -61,7 +62,7 @@ public class Parser {
     public Command parseCommand(String input)
             throws EmptyDescriptionException, UnknownCommandException,
                               NonIntegerIdException, IdOutOfBoundsException,
-                              EmptyKeywordException {
+                              EmptyKeywordException, InvalidDateException {
         String stripped = input.strip();
         String[] tokens = stripped.split(" ", 2);
 
