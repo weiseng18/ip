@@ -31,15 +31,10 @@ public class DeadlineCommand implements Command {
     }
 
     @Override
-    public boolean isBye() {
-        return false;
-    }
-
-    @Override
-    public String execute() {
+    public Response execute() {
         assert taskList != null;
         Deadline deadline = new Deadline(name, date);
         taskList.add(deadline);
-        return "Added task:\n" + deadline.toString();
+        return new Response("Added task:\n" + deadline.toString(), false);
     }
 }

@@ -26,15 +26,10 @@ public class TodoCommand implements Command {
     }
 
     @Override
-    public boolean isBye() {
-        return false;
-    }
-
-    @Override
-    public String execute() {
+    public Response execute() {
         assert taskList != null;
         Todo todo = new Todo(name);
         taskList.add(todo);
-        return "Added task:\n" + todo.toString();
+        return new Response("Added task:\n" + todo.toString(), false);
     }
 }

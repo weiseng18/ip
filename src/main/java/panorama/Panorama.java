@@ -1,6 +1,7 @@
 package panorama;
 
 import panorama.command.Command;
+import panorama.command.Response;
 import panorama.exception.EmptyDescriptionException;
 import panorama.exception.EmptyKeywordException;
 import panorama.exception.IdOutOfBoundsException;
@@ -26,14 +27,14 @@ public class Panorama {
         parser = new Parser(taskList);
     }
 
-    public String getResponse(String input) {
+    public Response getResponse(String input) {
         try {
             Command c = parser.parseCommand(input);
             return c.execute();
         } catch (UnknownCommandException | EmptyDescriptionException
                 | NonIntegerIdException | IdOutOfBoundsException
                 | EmptyKeywordException e) {
-            return e.getMessage();
+            return new Response(e.getMessage(), false);
         }
     }
 

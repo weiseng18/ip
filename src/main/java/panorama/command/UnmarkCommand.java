@@ -26,15 +26,10 @@ public class UnmarkCommand implements Command {
     }
 
     @Override
-    public boolean isBye() {
-        return false;
-    }
-
-    @Override
-    public String execute() {
+    public Response execute() {
         assert taskList != null;
         taskList.unmark(id);
         Task task = taskList.get(id);
-        return "OK, I've marked this task as not done yet:\n" + task.toString();
+        return new Response("OK, I've marked this task as not done yet:\n" + task.toString(), false);
     }
 }

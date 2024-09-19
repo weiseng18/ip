@@ -25,14 +25,9 @@ public class FindCommand implements Command {
     }
 
     @Override
-    public boolean isBye() {
-        return false;
-    }
-
-    @Override
-    public String execute() {
+    public Response execute() {
         assert taskList != null;
         TaskList filteredList = taskList.find(keyword);
-        return filteredList.toString();
+        return new Response(filteredList.toString(), false);
     }
 }
