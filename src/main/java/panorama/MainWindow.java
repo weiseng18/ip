@@ -1,5 +1,6 @@
 package panorama;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -7,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import panorama.command.Response;
+
 /**
  * Controller for the main GUI.
  */
@@ -48,12 +51,20 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        String response = duke.getResponse(input);
+        Response response = duke.getResponse(input);
+
+        String output = response.getMessage();
+        boolean isBye = response.isBye();
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getDukeDialog(output, dukeImage)
         );
         userInput.clear();
+
+        if (isBye) {
+            Platform.exit();
+        }
     }
 }
 

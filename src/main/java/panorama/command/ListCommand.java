@@ -21,13 +21,8 @@ public class ListCommand implements Command {
     }
 
     @Override
-    public boolean isBye() {
-        return false;
-    }
-
-    @Override
-    public String execute() {
+    public Response execute() {
         assert taskList != null;
-        return taskList.toString();
+        return new Response(taskList.toString(), false);
     }
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import panorama.exception.InvalidDateException;
 import panorama.task.Deadline;
 import panorama.task.Event;
 import panorama.task.Task;
@@ -42,11 +43,26 @@ public class Storage {
             if (tokens[0].equals("T")) {
                 tasks.add(new Todo(tokens[2]));
             } else if (tokens[0].equals("D")) {
-                LocalDate date = DateParser.parse(tokens[3]);
+                LocalDate date;
+                try {
+                    date = DateParser.parse(tokens[3]);
+                } catch (InvalidDateException e) {
+                    // Skip this entry if date is invalid
+                    continue;
+                }
+
                 tasks.add(new Deadline(tokens[2], date));
             } else if (tokens[0].equals("E")) {
-                LocalDate from = DateParser.parse(tokens[3]);
-                LocalDate to = DateParser.parse(tokens[4]);
+                LocalDate from;
+                LocalDate to;
+                try {
+                    from = DateParser.parse(tokens[3]);
+                    to = DateParser.parse(tokens[4]);
+                } catch (InvalidDateException e) {
+                    // Skip this entry if date is invalid
+                    continue;
+                }
+
                 tasks.add(new Event(tokens[2], from, to));
             } else {
                 // Incorrect input, skip

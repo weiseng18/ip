@@ -7,7 +7,7 @@ import panorama.Message;
  * This exception is used to signal that the user has entered a command
  * that is not recognized by the application.
  */
-public class UnknownCommandException extends Exception {
+public class UnknownCommandException extends PanoramaException {
     /**
      * Constructs a new {@code UnknownCommandException} with a default error message.
      */

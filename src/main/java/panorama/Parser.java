@@ -14,6 +14,11 @@ import panorama.command.MarkCommand;
 import panorama.command.TodoCommand;
 import panorama.command.UnmarkCommand;
 import panorama.exception.EmptyDescriptionException;
+import panorama.exception.EmptyKeywordException;
+import panorama.exception.IdOutOfBoundsException;
+import panorama.exception.InvalidDateException;
+import panorama.exception.InvalidUsageException;
+import panorama.exception.NonIntegerIdException;
 import panorama.exception.UnknownCommandException;
 
 /**
@@ -27,13 +32,39 @@ public class Parser {
     }
 
     /**
+     * Parses the user input. It expects a string containing a positive integer
+     * represnting a 1-indexed ID. It also expects the parsed ID, id to be between
+     * 0 and taskList.size() - 1 inclusive.
+     *
+     * @param input The user's input string to be parsed.
+     * @return An integer representing the parsed ID in 0-index.
+     */
+    public int parseId(String input) throws NonIntegerIdException, IdOutOfBoundsException {
+        int id;
+        try {
+            id = Integer.parseInt(input) - 1;
+
+            int curSize = this.taskList.numTasks();
+            if (id < 0 || id >= curSize) {
+                throw new IdOutOfBoundsException(curSize);
+            }
+        } catch (NumberFormatException e) {
+            throw new NonIntegerIdException();
+        }
+        return id;
+    }
+
+    /**
      * Parses the user input and returns an executable command based on the input.
      *
      * @param input The user's input string to be parsed.
      * @return A {@code Command} representing the parsed command.
      */
     public Command parseCommand(String input)
-            throws EmptyDescriptionException, UnknownCommandException {
+            throws EmptyDescriptionException, UnknownCommandException,
+                              NonIntegerIdException, IdOutOfBoundsException,
+                              EmptyKeywordException, InvalidDateException,
+                              InvalidUsageException {
         String stripped = input.strip();
         String[] tokens = stripped.split(" ", 2);
 
@@ -55,7 +86,12 @@ public class Parser {
             if (rest.equals("")) {
                 throw new EmptyDescriptionException();
             }
+
             String[] contentTokens = rest.split(" /by ", 2);
+            if (contentTokens.length != 2) {
+                throw new InvalidUsageException(Message.CommandFormat.DEADLINE);
+            }
+
             String name = contentTokens[0];
             LocalDate date = DateParser.parse(contentTokens[1]);
             return new DeadlineCommand(taskList, name, date);
@@ -66,9 +102,19 @@ public class Parser {
             if (rest.equals("")) {
                 throw new EmptyDescriptionException();
             }
+
             String[] contentTokens = rest.split(" /from ", 2);
+            if (contentTokens.length != 2) {
+                throw new InvalidUsageException(Message.CommandFormat.EVENT);
+            }
+
             String name = contentTokens[0];
+
             String[] dateRangeTokens = contentTokens[1].split(" /to ", 2);
+            if (dateRangeTokens.length != 2) {
+                throw new InvalidUsageException(Message.CommandFormat.EVENT);
+            }
+
             LocalDate from = DateParser.parse(dateRangeTokens[0]);
             LocalDate to = DateParser.parse(dateRangeTokens[1]);
             return new EventCommand(taskList, name, from, to);
@@ -76,19 +122,19 @@ public class Parser {
 
         case MarkCommand.COMMAND_SHORTHAND:
         case MarkCommand.COMMAND_WORD: {
-            int id = Integer.parseInt(rest) - 1;
+            int id = parseId(rest);
             return new MarkCommand(taskList, id);
         }
 
         case UnmarkCommand.COMMAND_SHORTHAND:
         case UnmarkCommand.COMMAND_WORD: {
-            int id = Integer.parseInt(rest) - 1;
+            int id = parseId(rest);
             return new UnmarkCommand(taskList, id);
         }
 
         case DeleteCommand.COMMAND_SHORTHAND:
         case DeleteCommand.COMMAND_WORD: {
-            int id = Integer.parseInt(rest) - 1;
+            int id = parseId(rest);
             return new DeleteCommand(taskList, id);
         }
 
@@ -99,6 +145,9 @@ public class Parser {
 
         case FindCommand.COMMAND_SHORTHAND:
         case FindCommand.COMMAND_WORD: {
+            if (rest.equals("")) {
+                throw new EmptyKeywordException();
+            }
             return new FindCommand(taskList, rest);
         }
 

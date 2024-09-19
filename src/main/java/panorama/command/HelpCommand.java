@@ -10,12 +10,7 @@ public class HelpCommand implements Command {
     public static final String COMMAND_SHORTHAND = "h";
 
     @Override
-    public boolean isBye() {
-        return false;
-    }
-
-    @Override
-    public String execute() {
+    public Response execute() {
         StringBuilder sb = new StringBuilder();
 
         sb.append("The following commands are available.\n\n");
@@ -37,6 +32,6 @@ public class HelpCommand implements Command {
         sb.append(Message.CommandFormat.UNMARK + "\n");
         sb.append(Message.CommandFormat.DELETE);
 
-        return sb.toString();
+        return new Response(sb.toString(), false);
     }
 }

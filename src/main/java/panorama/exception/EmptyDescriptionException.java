@@ -7,7 +7,7 @@ import panorama.Message;
  * This exception is used to signal that a user-provided input for a task
  * does not include a required description.
  */
-public class EmptyDescriptionException extends Exception {
+public class EmptyDescriptionException extends PanoramaException {
     /**
      * Constructs a new {@code EmptyDescriptionException} with a default error message.
      */

@@ -34,15 +34,10 @@ public class EventCommand implements Command {
     }
 
     @Override
-    public boolean isBye() {
-        return false;
-    }
-
-    @Override
-    public String execute() {
+    public Response execute() {
         assert taskList != null;
         Event event = new Event(name, from, to);
         taskList.add(event);
-        return "Added task:\n" + event.toString();
+        return new Response("Added task:\n" + event.toString(), false);
     }
 }

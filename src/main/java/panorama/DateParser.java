@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import panorama.exception.InvalidDateException;
+
 /**
  * Provides utility methods for parsing and formatting dates.
  * Supports conversion between string representations and {@code LocalDate} objects.
@@ -19,8 +21,14 @@ public class DateParser {
      * @return A {@code LocalDate} object representing the parsed date and time.
      * @throws DateTimeParseException If the provided string cannot be parsed into a date.
      */
-    public static LocalDate parse(String dateStr) throws DateTimeParseException {
-        return LocalDate.parse(dateStr, INPUT_FORMATTER);
+    public static LocalDate parse(String dateStr) throws InvalidDateException {
+        LocalDate result;
+        try {
+            result = LocalDate.parse(dateStr, INPUT_FORMATTER);
+        } catch (DateTimeParseException e) {
+            throw new InvalidDateException();
+        }
+        return result;
     }
 
     /**
