@@ -1,6 +1,6 @@
 # Panorama User Guide
 
-<img src="Ui.png" alt="Screenshot of Panorama's UI for showcase to the user" width="600" />
+<img src="Ui.png" alt="Screenshot of Panorama's UI" width="600" />
 
 ## Menu
 
