@@ -31,6 +31,13 @@ public class Storage {
      */
     List<Task> loadTasks() throws FileNotFoundException {
         File file = new File(SAVE_FILE_NAME);
+
+        if (!file.exists()) {
+            // If file does not exist, return empty list
+            return new ArrayList<>();
+        }
+
+        assert(file.exists());
         Scanner scanner = new Scanner(file);
 
         List<Task> tasks = new ArrayList<>();
